@@ -1,5 +1,4 @@
 name: T3 Javascript Framework
-markdown: redcarpet
-highlighter: pygments
+markdown: kramdown
+highlighter: rouge
 baseurl: ""
-relative_permalinks: false
