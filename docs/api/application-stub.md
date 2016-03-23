@@ -178,3 +178,172 @@ Checks if a service has been registered.
     </tbody>
 </table>
 
+<hr class="separator">
+
+<div class="anchor" id="getServiceForTest"></div>
+
+## getServiceForTest
+
+### Description
+Retrieves an instance of a registered service with a `TestServiceProvider` object.
+
+### Usage
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="required">service</td>
+            <td>string</td>
+            <td>Name of service.</td>
+        </tr>
+        <tr>
+            <td class="required">serviceProvider</td>
+            <td>TestServiceProvider</td>
+            <td>A test service provider object.</td>
+        </tr>
+    </tbody>
+</table>
+
+### Example
+{% highlight javascript %}
+Box.Application.getServiceForTest('some-service', new Box.TestServiceProvider({
+    logger: {
+        warn: function() {}
+    }
+});
+{% endhighlight %}
+
+<hr class="separator">
+
+## getModuleForTest
+
+### Description
+Retrieves an instance of a registered module with a `TestServiceProvider` object.
+
+### Usage
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="required">module</td>
+            <td>string</td>
+            <td>Name of module.</td>
+        </tr>
+        <tr>
+            <td class="required">serviceProvider</td>
+            <td>TestServiceProvider</td>
+            <td>A test service provider object.</td>
+        </tr>
+    </tbody>
+</table>
+
+### Example
+{% highlight javascript %}
+Box.Application.getModuleForTest('some-module', new Box.TestServiceProvider({
+    logger: {
+        warn: function() {}
+    }
+});
+{% endhighlight %}
+
+<hr class="separator">
+
+## getModuleForTest
+
+### Description
+Retrieves an instance of a registered module with a `TestServiceProvider` object.
+
+### Usage
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="required">module</td>
+            <td>string</td>
+            <td>Name of module.</td>
+        </tr>
+        <tr>
+            <td class="required">serviceProvider</td>
+            <td>TestServiceProvider</td>
+            <td>A test service provider object.</td>
+        </tr>
+    </tbody>
+</table>
+
+### Example
+{% highlight javascript %}
+Box.Application.getModuleForTest('some-module', new Box.TestServiceProvider({
+    logger: {
+        warn: function() {}
+    }
+});
+{% endhighlight %}
+
+<hr class="separator">
+
+## getBehaviorForTest
+
+### Description
+Retrieves an instance of a registered behavior with a `TestServiceProvider` object.
+
+### Usage
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="required">behavior</td>
+            <td>string</td>
+            <td>Name of behavior.</td>
+        </tr>
+        <tr>
+            <td class="required">serviceProvider</td>
+            <td>TestServiceProvider</td>
+            <td>A test service provider object.</td>
+        </tr>
+    </tbody>
+</table>
+
+### Example
+{% highlight javascript %}
+Box.Application.getBehaviorForTest('some-behavior', new Box.TestServiceProvider({
+    logger: {
+        warn: function() {}
+    }
+});
+{% endhighlight %}
+
+<hr class="separator">
+
+## reset
+
+### Description
+Unregisters all services, modules, and behaviors
+
+### Example
+{% highlight javascript %}
+Box.Application.reset();
+{% endhighlight %}
