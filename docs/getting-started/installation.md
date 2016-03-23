@@ -23,13 +23,13 @@ For development, we recommend downloading `t3.js` while for production `t3.min.j
 
 You can download T3 using [npm](https://npmjs.com):
 
-```
+{% highlight shell %}
 $ npm i t3js --save
-```
+{% endhighlight %}
 
 This installs T3 into `node_modules/t3js`. The package includes the `dist` directory from the GitHub repository, so you can include T3 in your page like this:
 
-```html
+{% highlight html %}
 <!-- Use the unminified version of T3 -->
 <script src="./node_modules/t3js/dist/t3.js"></script>
 
@@ -37,7 +37,7 @@ This installs T3 into `node_modules/t3js`. The package includes the `dist` direc
 
 <!-- Use the minified version of T3 -->
 <script src="./node_modules/t3js/dist/t3.min.js"></script>
-```
+{% endhighlight %}
 
 Of course, you can also copy the files out of the npm package into another folder.
 
@@ -47,7 +47,7 @@ Of course, you can also copy the files out of the npm package into another folde
 
 You can also include T3 directly from a CDN by using [RawGit](http://rawgit.com). You can include a specific version of T3 by including the version number in the URL. For example. to use version 1.0.2, you can use the following:
 
-```html
+{% highlight html %}
 <!-- Use the unminified version of T3 -->
 <script src="//cdn.rawgit.com/box/t3js/{{ site.data.t3.version }}/dist/t3.js"></script>
 
@@ -55,11 +55,11 @@ You can also include T3 directly from a CDN by using [RawGit](http://rawgit.com)
 
 <!-- Use the minified version of T3 -->
 <script src="//cdn.rawgit.com/box/t3js/{{ site.data.t3.version }}/dist/t3.min.js"></script>
-```
+{% endhighlight %}
 
 For development purposes, you can also link directly to the latest published version. This is not recommended in production because the contents of this file changes each time a new release is pushed:
 
-```html
+{% highlight html %}
 <!-- Dev-only: latest published release -->
 <script src="//cdn.rawgit.com/box/t3js/master/dist/t3.js"></script>
 
@@ -67,7 +67,7 @@ For development purposes, you can also link directly to the latest published ver
 
 <!-- Dev-only: latest published release minified -->
 <script src="//cdn.rawgit.com/box/t3js/master/dist/t3.min.js"></script>
-```
+{% endhighlight %}
 
 **Note:** We highly recommend using a specific version of T3. Linking directly to the master branch means getting updates without notice.
 

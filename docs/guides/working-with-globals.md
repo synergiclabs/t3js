@@ -17,7 +17,7 @@ One of the best practices represented in T3 is to favor explict over implicit, a
 
 In modules and behaviors, the `getGlobal()` method is available on the context object. You need only pass in the name of a variable in the global scope to retrieve a reference:
 
-```js
+{% highlight js %}
 Box.Application.addModule('moduleID', function(context) {
 
     var $;
@@ -33,13 +33,13 @@ Box.Application.addModule('moduleID', function(context) {
     };
 
 });
-```
+{% endhighlight %}
 
 Here, the module retrieves a reference to the global `jQuery` object and stores it in a local variable.
 
 Services can also use `getGlobal()`, as it is provided on the application object that is passed into the creator function:
 
-```js
+{% highlight js %}
 Box.Application.addService('serviceID', function(application) {
 
     // retrieve a reference to jQuery
@@ -50,7 +50,7 @@ Box.Application.addService('serviceID', function(application) {
     };
 
 });
-```
+{% endhighlight %}
 
 Using `getGlobal()` instead of reaching out into the global scope directly has several advantages:
 
@@ -62,7 +62,7 @@ Using `getGlobal()` instead of reaching out into the global scope directly has s
 
 You may also find that you need to access T3 from non-T3 objects, global or otherwise. Keep in mind that T3 restricts access to modules and behaviors as part of enforcing strict loose couping. Put simply: modules and behaviors are not meant to be used by outside objects. Services, on the other hand, were made to be accessed by any type of object. As such, you can retrieve services in the global scope by using `Box.Application.getService()`, for example:
 
-```js
+{% highlight js %}
 // accessing a service from non-T3 code
 $(function() {
 
@@ -70,7 +70,7 @@ $(function() {
     service.doSomething();
 
 });
-```
+{% endhighlight %}
 
 This code retrieves the `myservice` service from a jQuery callback. Since the `Box.Application` object is both global and exposes `getService()`, you have an easy way to access any T3 service from any other code.
 

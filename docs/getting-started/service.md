@@ -15,7 +15,7 @@ Services are defined by calling `Box.Application.addService()`. This method acce
 
 The basic format for services is:
 
-```js
+{% highlight js %}
 Box.Application.addService('serviceID', function(application) {
 
     // private methods here
@@ -26,7 +26,7 @@ Box.Application.addService('serviceID', function(application) {
 
     };
 });
-```
+{% endhighlight %}
 
 There are no predefined patterns for services, so you are free to create an interface that is appropriate for your needs. There's also no lifecycle for services, as they are simply libraries of functionality that must define their own lifecycle (or lack thereof).
 
@@ -34,7 +34,7 @@ There are no predefined patterns for services, so you are free to create an inte
 
 In the credit card validator example, the actual credit card validation functionality is a good candidate to be a service because credit card number validation is a generic algorithm that could be used anywhere. It's comprised of [Luhn algorithm](http://en.wikipedia.org/wiki/Luhn_algorithm) for checksum validation of the credit card number and ensuring the expiration date is in the future. Here's the credit card validation service:
 
-```js
+{% highlight js %}
 Box.Application.addService('credit-card', function(application) {
 
     'use strict';
@@ -102,7 +102,7 @@ Box.Application.addService('credit-card', function(application) {
     };
 
 });
-```
+{% endhighlight %}
 
 The service exposes three methods: `isValid()`, `isValidNumber()`, and `isExpired()`. There's also one private function called `doLuhnCheck()` that performs the actual checksum validation. Keep in mind that not every consumer of this service will use all of these methods, however, all of the methods are useful on their own and make it easier to write tests for service.
 
@@ -110,7 +110,7 @@ The service exposes three methods: `isValid()`, `isValidNumber()`, and `isExpire
 
 When a module or another service wants to access this service, it can do so using `context.getService()` (in modules) or `application.getService()` (in services) and passing in the service ID. For example:
 
-```js
+{% highlight js %}
 Box.Application.addModule('moduleID', function(context) {
 
     // private methods here
@@ -125,7 +125,7 @@ Box.Application.addModule('moduleID', function(context) {
 
     };
 });
-```
+{% endhighlight %}
 
 All services are lazily-initialized, so the service creator function isn't called until the first time a module requests the service. The call to `getService()` returns the object that was returned from the service's creator function.
 
@@ -133,7 +133,7 @@ All services are lazily-initialized, so the service creator function isn't calle
 
 In the credit card validation example, here's how the module uses the service:
 
-```js
+{% highlight js %}
 Box.Application.addModule('cc-validation-form', function(context) {
 
     'use strict';
@@ -178,7 +178,7 @@ Box.Application.addModule('cc-validation-form', function(context) {
     };
 
 });
-```
+{% endhighlight %}
 
 In this code, the module stores a reference to the credit card service in `creditCardService`. That object is then used to validate the credit card number when the validate button is clicked. Depending on the validity of the credit card, a message is populated on screen.
 

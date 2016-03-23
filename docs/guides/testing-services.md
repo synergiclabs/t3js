@@ -16,7 +16,7 @@ If you're writing a simple service that has no dependencies on other components 
 
 ### QUnit
 
-```js
+{% highlight js %}
 QUnit.module('service-name', {
 
     beforeEach: function() {
@@ -32,11 +32,11 @@ QUnit.test('doSomething() should x when y', function() {
 
     // include asserts here
 });
-```
+{% endhighlight %}
 
 ### Mocha
 
-```js
+{% highlight js %}
 describe('services/service-name', function() {
     var service;
 
@@ -53,7 +53,7 @@ describe('services/service-name', function() {
         });
     });
 });
-```
+{% endhighlight %}
 
 ## Testing Services with Dependencies
 
@@ -61,7 +61,7 @@ If your service depends on the application object to perform its tasks, then you
 
 ### QUnit
 
-```js
+{% highlight js %}
 QUnit.module('service-name', {
     beforeEach: function() {
 
@@ -91,11 +91,11 @@ QUnit.test('doSomething() should x when y', function() {
 
     // include asserts here
 });
-```
+{% endhighlight %}
 
 ### Mocha
 
-```js
+{% highlight js %}
 describe('services/service-name', function() {
     var service;
     var sandbox = sinon.sandbox.create();
@@ -129,6 +129,6 @@ describe('services/service-name', function() {
         });
     });
 });
-```
+{% endhighlight %}
 
 To create a true unit test, you need to create a stub for each service that your code depends on. This example creates a stub service called "another-service". The call to new `Box.TestServiceProvider()` includes a name-value list of service names and objects that should be returned for that name. The returned object is then passed in as the second argument to `Box.Application.getServiceForTest()` so that it becomes available inside of the service creator function.

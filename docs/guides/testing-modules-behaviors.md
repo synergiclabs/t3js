@@ -25,7 +25,7 @@ If you're writing a simple module that has no dependencies on other components o
 
 Create a new `QUnit.module` and give it the same name as your module (note that `QUnit.module` has nothing to do with T3 module). In the `beforeEach()` method, call `getModuleForTest()` to retrieve a reference to the module object and store it in `this.module`. Then, you can write as many tests as you want referencing methods on the `this.module`. Here's a simple example:
 
-```js
+{% highlight js %}
 QUnit.module('modules/module-name', {
 
     beforeEach: function() {
@@ -46,13 +46,13 @@ QUnit.test('first test', function() {
 
     // include asserts here
 });
-```
+{% endhighlight %}
 
 ### Mocha
 
 For Mocha testing, create a `describe` with the name of your module. In the `beforeEach()` function, call `getModuleForTest()` to retrieve a reference to the module object. For each method you want to test, include another `describe` section, and then however many `it` tests you need to cover the functionality. For example:
 
-```js
+{% highlight js %}
 describe('modules/module-name', function() {
     var module;
 
@@ -74,7 +74,7 @@ describe('modules/module-name', function() {
         });
     });
 });
-```
+{% endhighlight %}
 
 ## Testing with Context Object and Services
 
@@ -82,7 +82,7 @@ If your module depends on the `context` object to perform its tasks, then you'll
 
 Assume you have a module defined as:
 
-```js
+{% highlight js %}
 Box.Application.addModule('module-name', function(context) {
 
 
@@ -95,14 +95,14 @@ Box.Application.addModule('module-name', function(context) {
     };
 
 });
-```
+{% endhighlight %}
 
 Writing a test for this module is fairly straightforward. The first thing to do is create a service stub called `anotherService` that has the methods you want the module to call. Then, a `Box.TestServiceProvider` is created an initialized with `anotherService`. This becomes a fake version of the `context` object that is normally passed into a module. That fake `context` is then passed to `getModuleForTest()` so the module can get access to it.
 
 
 ### QUnit
 
-```js
+{% highlight js %}
 QUnit.module('modules/module-name', {
 
     beforeEach: function() {
@@ -133,11 +133,11 @@ QUnit.test('should call doSomething() on the service', function() {
     this.sandbox.mock(anotherService).expects('doSomething');
     this.module.doSomething();
 });
-```
+{% endhighlight %}
 
 ### Mocha
 
-```js
+{% highlight js %}
 describe('modules/module-name', function() {
     var module,
         sandbox = sinon.sandbox.create(),
@@ -172,13 +172,13 @@ describe('modules/module-name', function() {
 
     });
 });
-```
+{% endhighlight %}
 
 ## Testing Event Handlers
 
 When you want to test how an event handler works, call the method directly on the module object and pass in an event object as the argument. You should fill in only the event properties that you are using within the event handler. For instance, suppose you have this module:
 
-```js
+{% highlight js %}
 Box.Application.addModule('module-name', function(context) {
     return {
         onclick: function(event, element, elementType) {
@@ -192,13 +192,13 @@ Box.Application.addModule('module-name', function(context) {
 
     };
 });
-```
+{% endhighlight %}
 
 In this case, you want to test `onclick()` to see that when an element with the class name of `"menu-btn"` is clicked, the method `showMenu()` is called. You would not, however, want to test exactly what `showMenu()` is doing (that should be in a separate test where `showMenu()` is called directly). For the event handler, you simply want to test that the method was called as a result of the element that was clicked. To do so, you can use a Sinon mock on the `showMenu()` method to verify that it was called.
 
 ### QUnit
 
-```js
+{% highlight js %}
 QUnit.module('modules/module-name', {
 
     beforeEach: function() {
@@ -229,11 +229,11 @@ QUnit.test('Clicking an element with "show-menu" type should call showMenu()', f
     // call the method to test
     this.module.onclick(event, target, 'show-menu');
 });
-```
+{% endhighlight %}
 
 ### Mocha
 
-```js
+{% highlight js %}
 describe('modules/module-name', function() {
     var sandbox = sinon.sandbox.create(),
         module;
@@ -266,7 +266,7 @@ describe('modules/module-name', function() {
     });
 });
 
-```
+{% endhighlight %}
 
 ## Testing with Configuration Data
 
@@ -274,7 +274,7 @@ If your module uses configuration data, then you must also stub out the `getConf
 
 ### QUnit
 
-```js
+{% highlight js %}
 QUnit.module('My module name', {
 
     beforeEach: function() {
@@ -302,11 +302,11 @@ QUnit.test('first test', function() {
 
     // include asserts here
 });
-```
+{% endhighlight %}
 
 ### Mocha
 
-```js
+{% highlight js %}
 describe('modules/module-name', function() {
     var sandbox = sinon.sandbox.create(),
         module;
@@ -338,4 +338,4 @@ describe('modules/module-name', function() {
 
     });
 });
-```
+{% endhighlight %}

@@ -13,19 +13,19 @@ We've switched the default t3 package to use native by default (IE9+). If you wo
 
 #### Including duplicate behaviors throw errors
 
-```js
+{% highlight js %}
 Box.Application.addService('some-module', function(application) {
     return {
         behaviors: ['behavior1', 'behavior2', 'behavior1'] // Error
     };
 });
-```
+{% endhighlight %}
 
 #### Behaviors `init()` before module `init()`
 
 This should allow the modules to rely on any required setup from the behaviors.
 
-```js
+{% highlight js %}
 Box.Application.addBehavior('some-behavior', function(context) {
 	return {
 		init: function() {
@@ -33,9 +33,9 @@ Box.Application.addBehavior('some-behavior', function(context) {
 		}
 	};
 });
-```
+{% endhighlight %}
 
-```js
+{% highlight js %}
 Box.Application.addModule('some-module', function(context) {
 	return {
 		behavior: ['some-behavior'],
@@ -45,43 +45,43 @@ Box.Application.addModule('some-module', function(context) {
 		}
 	};
 });
-```
+{% endhighlight %}
 
-```
+{% highlight js %}
 Box.Application.start('[data-module="some-module"]');
 
 Outputs:
 foo
 bar
-```
+{% endhighlight %}
 
 #### `getService()` throws errors when the service does not exist
 
-```js
+{% highlight js %}
 application.getService('non-existent-service'); // Error
-```
+{% endhighlight %}
 
 Previously, this would return `null`. Use `hasService()` to check for optional services.
 
-```js
+{% highlight js %}
 var service = application.hasService('some-service')
 		? application.getService('some-service') : null;
-```
+{% endhighlight %}
 This change will allow developers to catch issues with missing services before they hit production.
 
 #### Removed `exports` option from `addService()`
 
-```js
+{% highlight js %}
 Box.Application.addService('foo', function() { ... }, {
 	exports: ['bar']
 });
 Box.Application.bar(); // no longer works
-```
+{% endhighlight %}
 This option was unused and dangerous since it modified the global `Application` object which could lead to unexpected coupling.
 
 #### `TestServiceProvider` requires explicit pre-registered services
 
-```js
+{% highlight js %}
 beforeEach(function() {
 	var context = new Box.TestServiceProvider({
 		service1: {
@@ -90,5 +90,5 @@ beforeEach(function() {
 	}, ['dom', 'promises']); // List of services used but not stubbed
 	...
 });
-```
+{% endhighlight %}
 This will prevent accidental leakage of services between unit tests.

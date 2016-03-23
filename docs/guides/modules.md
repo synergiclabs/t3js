@@ -13,20 +13,20 @@ Modules represent an area on a web page, and as such, contain what is considered
 
 Every module needs an element on the page that represents it. To indicate than an element represents a module, give it a `data-module` attribute specifying the module name. For example:
 
-```html
+{% highlight html %}
 <div data-module="module-name">
     <!-- your module HTML here -->
 </div>
-```
+{% endhighlight %}
 
 Note that an ID for the element is not necessary. Using the `data-module` attribute, the framework will automatically find the element and bind the correct module JavaScript to it.
 If you'd like to respond to an element or group of elements when an event occurs (such as click), then annotate that element with `data-type` and a value indicating the nature of the element (not what the element should do). You can then check this value to determine the correct course of action. For example:
 
-```html
+{% highlight html %}
 <div data-module="module-name">
     <button data-type="like-btn">Like</button>
 </div>
-```
+{% endhighlight %}
 
 The value for `data-type` should describe what the element is, not what it does. In this example, the `"like-btn"` value indicates what the button is so the JavaScript can determine how to respond when the element is interacted with. Prefer `data-type` attributes to IDs and classes, which may have other meanings.
 
@@ -36,7 +36,7 @@ Note: there are no restrictions as to which HTML elements may represent a T3 mod
 
 All modules start out with the same basic format:
 
-```js
+{% highlight js %}
 /**
  * @fileoverview Description of file
  * @author your name
@@ -82,7 +82,7 @@ Box.Application.addModule('module-name', function(context) {
     };
 
 });
-```
+{% endhighlight %}
 
 We recommend that the name of the module is passed into `Box.Application.addModule()` should match the name of the file without the `.js` extension (for instance, `"header"` for the file `header.js`). The second argument is a creator function that is called when the module is started. The creator function receives `context` as an argument, which is an instance of `Box.Context`. This is the module's touchpoint into the outside world. Everything the module wants to do that is outside of itself needs to be done, in some way, through the context object.
 
@@ -105,7 +105,7 @@ T3 modules are designed specifically to enable you to create small units of func
 
 This list of functionality represents the "public" interface to the module, which is to say that these are the behaviors you want to test outside of any specific user interaction. So your first take at a module interface is:
 
-```js
+{% highlight js %}
 Box.Application.addModule('module-name', function(context) {
 
     'use strict';
@@ -128,7 +128,7 @@ Box.Application.addModule('module-name', function(context) {
     };
 
 });
-```
+{% endhighlight %}
 
 Once you have this basic interface defined, you can go on to wire things up with events, add `init()` and `destroy()`, and flesh out the actual implementation. The important part is that each discrete interaction is represented as a method you can call and test separately.
 
@@ -140,7 +140,7 @@ When it's time for the module to start, the framework looks for a method called 
 
 Similarly, a module doesn't know when it will be shut down and it may be shut down at any time. When a module is to be shut down, the framework looks for a method called `destroy()` to execute (also optional). Anything that is setup in the `init()` method should be cleaned up in the `destroy()` method.
 
-```js
+{% highlight js %}
 Box.Application.addModule('module-name', function(context) {
 
     'use strict';
@@ -167,13 +167,13 @@ Box.Application.addModule('module-name', function(context) {
         }
     };
 });
-```
+{% endhighlight %}
 
 ### Retrieving the Module Element
 
 Since each module is represented by a DOM element, it's often useful to retrieve a reference to that element as the basis for DOM queries. You can retrieve a reference to the module element by using `context.getElement()`. For example:
 
-```js
+{% highlight js %}
 Box.Application.addModule('module-name', function(context) {
 
     'use strict';
@@ -199,7 +199,7 @@ Box.Application.addModule('module-name', function(context) {
         }
     };
 });
-```
+{% endhighlight %}
 
 Here, the module element is retrieved during `init()` and stored in a private variable `element`. That variable can then be used in other methods before it is dereferenced in `destroy()`.
 
@@ -207,7 +207,7 @@ Here, the module element is retrieved during `init()` and stored in a private va
 
 Modules handle all events inside of their container element. In order to subscribe to a particular type of event, add a method on the module object in the same format you would on a DOM element (i.e., "onclick"). When the module object is created, its methods are inspected to determine which DOM events the module wants to receive. The event handler is automatically attached based to the element that represents the module. Using event delegation, the method on the module is called for all events of that type within the module element.
 
-```js
+{% highlight js %}
 Box.Application.addModule('module-name', function(context) {
 
     'use strict';
@@ -237,7 +237,7 @@ Box.Application.addModule('module-name', function(context) {
         doSomethingElse: function() {}
     };
 });
-```
+{% endhighlight %}
 
 The `onclick()` method is automatically called when a click happens inside of the module's element. The event object is a DOM-normalized object so that it is the same in all browsers, including Internet Explorer 8. The second argument is the nearest ancestor element with a `data-type` attribute specified and the third argument is the value of `data-type` on that element. When an event occurs, checks to see if it has a `data-type` attribute, and if not, it checks its parent, and continues until it either finds an element with a `data-type` attribute or it reaches the module element.
 
@@ -254,7 +254,7 @@ Some best practices for event handlers:
 
 Since modules are completely isolated from one another, you cannot directly access one module from another. Modules communicate with one another through messages. A message is composed of a name and optionally some additional data. Messages are sent throughout the entire system by using the `broadcast()` method on the context object, such as:
 
-```js
+{% highlight js %}
 Box.Application.addModule('module-name', function(context) {
 
     'use strict';
@@ -277,11 +277,11 @@ Box.Application.addModule('module-name', function(context) {
         }
     };
 });
-```
+{% endhighlight %}
 
 When `broadcast()` is called, the messages is immediately sent to all modules that are interested in that message. Modules indicates this interest by specifying a modules array on the public interface containing the names of all messages they are interested in. When the message occurs, the `onmessage()` method is called and the name and data are passed in as arguments:
 
-```js
+{% highlight js %}
 Box.Application.addModule('module-name', function(context) {
 
     'use strict';
@@ -307,7 +307,7 @@ Box.Application.addModule('module-name', function(context) {
         }
     };
 });
-```
+{% endhighlight %}
 
 In this example, the module is listening for the "moduleclicked" message. The wireup to `onmessage()` happens automatically and without any further code.
 
@@ -319,19 +319,19 @@ All modules can listen for messages - you cannot specifically target a module to
 
 Configuration data is information that the module needs to function properly but isn't necessarily related to an element on the page. You can place configuration data inside of your module's markup by using a `<script>` tag and embedded a JSON object inside. For example:
 
-```html
+{% highlight html %}
 <div data-module="module-name">
     <script type="text/x-config">{"itemsPerPage":10,"root":"/home"}</script>
 
     <!-- your module HTML here -->
 </div>
-```
+{% endhighlight %}
 
 Note the `<script>` element must have a `type` of `"text/x-config"` to be registered as the module's configuration data. The contents must also be valid JSON, and as such, we strongly recommend using a server-side helper for generating its contents
 
 With that complete, you can access the configuration data in JavaScript using the context.getConfig() method:
 
-```js
+{% highlight js %}
 Box.Application.addModule('module-name', function(context) {
 
     'use strict';
@@ -356,6 +356,6 @@ Box.Application.addModule('module-name', function(context) {
         }
     };
 });
-```
+{% endhighlight %}
 
 In this example, the `init()` method reads the configuration data for that module. The data is retrieved automatically by looking in the module element to find the first `<script>` element with a `type` of `"text/x-config"`.

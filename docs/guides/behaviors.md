@@ -13,7 +13,7 @@ As we've been developing more code with T3, it has become apparent that there is
 
 Behaviors are defined in a manner similar to modules. The `Box.Application.addBehavior()` method accepts a name for the behavior and a creator function that is used to create the behavior object. Each behavior is represented by a single object and that single object is used for all modules that use the behavior:
 
-```js
+{% highlight js %}
 Box.Application.addBehavior('behavior-name', function(context) {
 
     return {
@@ -25,7 +25,7 @@ Box.Application.addBehavior('behavior-name', function(context) {
     };
 
 });
-```
+{% endhighlight %}
 
 In general, behaviors can do almost everything that modules can do:
 
@@ -38,7 +38,7 @@ In general, behaviors can do almost everything that modules can do:
 
 Modules declare that they would like to use a behavior by listing behavior names out in the behaviors array. This declares to the application that the module would like this behavior to apply within the module boundaries. For example:
 
-```js
+{% highlight js %}
 Box.Application.addModule('test-module', function(context) {
 
     return {
@@ -52,7 +52,7 @@ Box.Application.addModule('test-module', function(context) {
     };
 
 });
-```
+{% endhighlight %}
 
 The module itself has no access to the behavior object itself or to anything that the behavior is doing. For all intents and purposes, the module knows nothing about the behavior except that it has a name and some functionality will be applied to the module markup.
 
@@ -60,7 +60,7 @@ The module itself has no access to the behavior object itself or to anything tha
 
 When an event occurs inside of the module, the module object itself has the first opportunity to respond. After the module, each behavior receives the event in the order in which they are specified in the behaviors array. Consider this example:
 
-```js
+{% highlight js %}
 Box.Application.addModule('test-module', function(context) {
 
     return {
@@ -74,7 +74,7 @@ Box.Application.addModule('test-module', function(context) {
     };
 
 });
-```
+{% endhighlight %}
 
 When a click occurs in this module, the click event will first be handled by `test-module`, then `behavior-name1`, and then `behavior-name2`.
 

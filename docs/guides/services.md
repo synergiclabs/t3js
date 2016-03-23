@@ -11,7 +11,7 @@ Services are an important part of the T3 JavaScript architecture that provide ad
 
 **Important:** Services are supposed to be reusable by multiple modules. Keep that in mind when designing your interface. If it's too specific to a single use case, then it's worth exploring whether it can be made more generic so that others can use it.
 
-```js
+{% highlight js %}
 /**
  * @fileoverview Description of file
  * @author your name
@@ -57,7 +57,7 @@ Box.Application.addService('service-name', function(application) {
     };
 
 });
-```
+{% endhighlight %}
 
 The name of the service passed into `Box.Application.addService()` should match the name of the file without the `.js` extension. The second argument is a creator function that is called when the service is requested for the first time. Once the service has been created, it is cached by Box.Application so that every reference to the service uses the same object. The creator function receives `application` as an argument, which is a reference to `Box.Application` that is suitable for the service to use.
 
@@ -71,7 +71,7 @@ Testing then becomes a matter of testing the public interface. Everything that i
 
 If your service needs to create separate objects for each caller, then you should create a factory object. A factory object has a `create()` method that returns an instance that is unique per call. The basic format for a factory service is as follows:
 
-```js
+{% highlight js %}
 /**
  * @fileoverview Description of file
  * @author your name
@@ -116,7 +116,7 @@ Box.Application.addService('service-name', function(application) {
     };
 
 });
-```
+{% endhighlight %}
 
 The `create()` method can have whatever arguments are appropriate.
 
@@ -130,7 +130,7 @@ How you access a service depends on the code that wants to use it.
 
 To access a service from another service, access the service from the `application` object that is passed into the service creator, such as:
 
-```js
+{% highlight js %}
 Box.Application.addService('service-name', function(application) {
 
     'use strict';
@@ -155,13 +155,13 @@ Box.Application.addService('service-name', function(application) {
 
     };
 });
-```
+{% endhighlight %}
 
 ### From a Module
 
 To access a service from a module, access the service from the `context` object that is passed into the service creator, such as:
 
-```js
+{% highlight js %}
 Box.Application.addModule('module-name', function(context) {
 
     'use strict';
@@ -184,18 +184,18 @@ Box.Application.addModule('module-name', function(context) {
 
     };
 });
-```
+{% endhighlight %}
 
 ## Optional Services
 
 Occasionally, you may want to include a service but only if it is available. Use the `hasService()` method to check if your service has been included on the page.
 
-```js
+{% highlight js %}
 var someService;
 if (application.hasService('some-service')) {
 	someService = application.getService('some-service');
 }
-```
+{% endhighlight %}
 
 ## Do's and Don'ts
 
