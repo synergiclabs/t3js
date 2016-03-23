@@ -15,7 +15,9 @@ does not care which module is using it. It does it's own thing and that is it.
 <hr class="separator">
 
 <div class="anchor" id="init"></div>
+
 ## init
+
 ### Description
 Initializes the behavior. This method is fired automatically when <a href="{{ site.baseurl }}/docs/api/application/#start">Application.start</a> is called on the related module.
 
@@ -54,7 +56,9 @@ Application.start(moduleEl);
 <hr class="separator">
 
 <div class="anchor" id="destroy"></div>
+
 ## destroy
+
 ### Description
 Destroys the behavior. This method is fired automatically when <a href="{{ site.baseurl }}/docs/api/application/#stop">Application.stop</a> is called on the related module.
 
@@ -93,11 +97,13 @@ Application.stop(moduleEl);
 <hr class="separator">
 
 <div class="anchor" id="messages"></div>
+
 # Message Handling
 Message handlers for behaviors are the same as <a href="{{ site.baseurl }}/docs/api/modules/#messages">Module.messages</a>. Each one is handled separately and both can execute off the
 same message.
 
 ## messages
+
 ### Description
 List of messages that this behavior will listen for. This is used by Application to fire onmessage handlers.
 You should place this at the top of the behavior API so it is easy to find.
@@ -115,7 +121,9 @@ Application.addBehavior('test-behavior', function(context) {
 <hr class="separator">
 
 <div class="anchor" id="onmessage"></div>
+
 ## onmessage
+
 ### Description
 Handles application messages.
 
@@ -180,7 +188,9 @@ Application.broadcast('itemshared', {
 <hr class="separator">
 
 <div class="anchor" id="event-handlers"></div>
+
 # Event Handlers
+
 ### Description
 Handles specific DOM events that are fired within the module behavior. These handlers follow the on<event> convention.
 For example, 'onclick' handles click events and 'oncontextmenu' handles right click.
@@ -248,4 +258,3 @@ Application.addBehavior('item-menu', function(context) {
 
 });
 {% endhighlight %}
-

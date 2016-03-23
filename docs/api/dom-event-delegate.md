@@ -18,7 +18,9 @@ var delegate = new Box.DOMEventDelegate(element, {
 
 
 <div class="anchor" id="attachEvents"></div>
+
 ## attachEvents
+
 ### Description
 Attaches all events for the delegate.
 
@@ -38,6 +40,7 @@ delegate.attachEvents();
 <div class="anchor" id="detachEvents"></div>
 
 ## detachEvents
+
 ### Description
 Detaches all events for the delegate.
 

@@ -9,7 +9,9 @@ The object type that modules use to interact with the environment.
 Used exclusively within Application, but exposed publicly for easy testing.
 
 <div class="anchor" id="getElement"></div>
+
 ## getElement
+
 ### Description
 Returns the element that represents the module.
 
@@ -31,7 +33,9 @@ Application.addModule('abc', function(context) {
 <hr class="separator">
 
 <div class="anchor" id="getConfig"></div>
+
 ## getConfig
+
 ### Description
 Retrieves a module's configuration data from embedded JSON in a 'text/x-config' script tag.
 This method is a proxy to <a href="../application/#getModuleConfig">Application.getModuleConfig</a> but with a shorter name.
@@ -80,6 +84,7 @@ Application.addModule('abc', function(context) {
 <hr class="separator">
 
 <div class="anchor" id="broadcast"></div>
+
 ## broadcast
 
 ### Description
@@ -130,6 +135,7 @@ Application.addModule('search-bar', function(context) {
 <hr class="separator">
 
 <div class="anchor" id="getService"></div>
+
 ## getService
 
 ### Description
@@ -173,7 +179,9 @@ Application.addModule('abc', function(context) {
 <hr class="separator">
 
 <div class="anchor" id="getGlobal"></div>
+
 ## getGlobal
+
 ### Description
 Returns a global variable. This function exists to make accessing globals more explicit.
 
@@ -208,6 +216,7 @@ console.log(navigator.userAgent);
 <hr class="separator">
 
 <div class="anchor" id="getGlobalConfig"></div>
+
 ## getGlobalConfig
 
 ### Description

@@ -5,6 +5,7 @@ permalink: /docs/api/services/
 ---
 
 <div class="anchor" id="Services"></div>
+
 # Services
 Services are Application extensions that provide new capabilities to the entire system.
 The most important aspect of a service is its interface. Other modules and services
@@ -16,6 +17,7 @@ should only use services to get work done. Therefore, plugins, such as jQuery UI
 or abstracted by a T3 service.
 
 <div class="anchor" id="Rules"></div>
+
 # Rules
 1. Helper/Testing functions should not be exposed on the service API
 1. Unit testing should be done on the interface, not the implementation.
@@ -23,10 +25,12 @@ or abstracted by a T3 service.
 1. No Application/Business Logic
 
 <div class="anchor" id="Classification"></div>
+
 # Classification
 Services can be classified into two major categories: Widgets (UI-specific) and Utilities (non-UI).
 
 <div class="anchor" id="Utility"></div>
+
 ## Utility
 Utility services add functionality to the Application layer. T3 does not define
 any specific implementation details around utilities but does have a few guidelines.
@@ -75,6 +79,7 @@ Application.route('/home', {});
 {% endhighlight %}
 
 <div class="anchor" id="Widget"></div>
+
 ## Widgets
 Widgets are reusable UI-specific pieces of code. They do not contain application logic
 and should not contain initialization functions. Widgets are still services though and
@@ -97,11 +102,13 @@ popupsService.alert('Hello World!');
 {% endhighlight %}
 
 <div class="anchor" id="Patterns"></div>
+
 # Patterns
 There are two major patterns that services should follow. The following guidelines are for convention
 purposes and not hard requirements.
 
 <div class="anchor" id="Singleton"></div>
+
 ## Singleton
 Most utility services follow the singleton pattern.
 
@@ -126,6 +133,7 @@ dom.removeClass(element, 'style2');
 {% endhighlight %}
 
 <div class="anchor" id="Factory"></div>
+
 ## Factory
 As a convention, factories should have a `create()` method that returns a new instance of an object.
 You can decide what the parameters of `create()` are and unlike singletons, you can have initialization

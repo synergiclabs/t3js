@@ -9,7 +9,9 @@ The core application object where components are registered and managed
 
 
 <div class="anchor" id="init"></div>
+
 ## init
+
 ### Description
 Initializes the application. This will start modules on the page.
 
@@ -55,7 +57,9 @@ Box.Application.init({
 <hr class="separator">
 
 <div class="anchor" id="destroy"></div>
+
 ## destroy
+
 ### Description
 Destroys the application. This will stop modules on the page and unregister modules, services, and behaviors.
 
@@ -70,7 +74,9 @@ Box.Application.destroy();
 <hr class="separator">
 
 <div class="anchor" id="addService"></div>
+
 ## addService
+
 ### Description
 Register a T3 Service component.
 
@@ -135,7 +141,9 @@ Box.Application.route(...);
 <hr class="separator">
 
 <div class="anchor" id="addModule"></div>
+
 ## addModule
+
 ### Description
 Register a T3 Module component.
 
@@ -178,7 +186,9 @@ Box.Application.addModule('some-module', function(context) {
 <hr class="separator">
 
 <div class="anchor" id="addBehavior"></div>
+
 ## addBehavior
+
 ### Description
 Register a T3 Behavior component.
 
@@ -222,7 +232,9 @@ Box.Application.addBehavior('some-behavior', function(context) {
 <hr class="separator">
 
 <div class="anchor" id="getService"></div>
+
 ## getService
+
 ### Description
 Retrieves an instance of a registered service.
 
@@ -250,7 +262,9 @@ T3 Service or throws an error if it does not exist.
 <hr class="separator">
 
 <div class="anchor" id="hasService"></div>
+
 ## hasService
+
 ### Description
 Checks if a service has been registered.
 
@@ -278,7 +292,9 @@ True if the service exists, false otherwise.
 <hr class="separator">
 
 <div class="anchor" id="getGlobal"></div>
+
 ## getGlobal
+
 ### Description
 Returns a global variable. This function exists to make accessing globals more explicit.
 
@@ -314,7 +330,9 @@ console.log(navigator.userAgent);
 <hr class="separator">
 
 <div class="anchor" id="getGlobalConfig"></div>
+
 ## getGlobalConfig
+
 ### Description
 Retrieves a configuration value that was passed through init.
 
@@ -352,7 +370,9 @@ console.log(Box.Application.getGlobalConfig('username')); // Outputs "bob"
 <hr class="separator">
 
 <div class="anchor" id="getModuleConfig"></div>
+
 ## getModuleConfig
+
 ### Description
 Retrieves a module's configuration data from embedded JSON in a 'text/x-config' script tag.
 See <a href="../context/#getConfig">Context.getConfig</a>.
@@ -408,7 +428,9 @@ console.log(Box.Application.getModuleConfig(moduleEl, 'baz'));
 <hr class="separator">
 
 <div class="anchor" id="start"></div>
+
 ## start
+
 ### Description
 Begins the lifecycle of a module (registers and binds listeners).
 
@@ -449,7 +471,9 @@ Box.Application.start(moduleEl);
 <hr class="separator">
 
 <div class="anchor" id="startAll"></div>
+
 ## startAll
+
 ### Description
 Starts all modules contained within an element.
 
@@ -495,7 +519,9 @@ Box.Application.startAll(contentEl); // starts both modules
 <hr class="separator">
 
 <div class="anchor" id="stop"></div>
-##stop
+
+## stop
+
 ### Description
 Ends the lifecycle of a module (unregisters and unbinds listeners).
 
@@ -536,7 +562,9 @@ Box.Application.stop(moduleEl);
 <hr class="separator">
 
 <div class="anchor" id="stopAll"></div>
+
 ## stopAll
+
 ### Description
 Stops all modules contained within an element.
 
@@ -582,7 +610,9 @@ Box.Application.stopAll(contentEl); // stop both modules
 <hr class="separator">
 
 <div class="anchor" id="isStarted"></div>
+
 ## isStarted
+
 ### Description
 Determines if a module represented by the HTML element is started.
 If the element doesn't have a data-module attribute, this method always returns false.
@@ -628,7 +658,9 @@ console.log(Box.Application.isStarted(moduleEl)); // Returns true
 <hr class="separator">
 
 <div class="anchor" id="broadcast"></div>
+
 ## broadcast
+
 ### Description
 Broadcasts a message to all registered listeners
 
@@ -679,6 +711,7 @@ Box.Application.broadcast('statechanged', {
 <hr class="separator">
 
 ## reportError
+
 ### Description
 Signals that an error has occurred. If in debug mode, an error is thrown. Otherwise, an event is fired.
 
@@ -709,13 +742,16 @@ Box.Application.reportError(new Error('Invalid User ID'));
 
 ## Additional Methods
 <div class="anchor" id="on"></div>
+
 ### on
 See <a href="../event-target/#on">EventTarget.on</a>
 
 <div class="anchor" id="off"></div>
+
 ### off
 See <a href="../event-target/#off">EventTarget.off</a>
 
 <div class="anchor" id="fire"></div>
+
 ### fire
 See <a href="../event-target/#fire">EventTarget.fire</a>

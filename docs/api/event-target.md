@@ -13,8 +13,9 @@ Message names should be all lower-case with no dashes or underscores, however, i
 <hr class="separator">
 
 <div class="anchor" id="on"></div>
-on
---
+
+## on
+
 ### Description
 Adds a new event handler for a particular type of event.
 
@@ -55,7 +56,9 @@ EventTarget.fire('custom-event'); // Triggers an output of "test"
 <hr class="separator">
 
 <div class="anchor" id="off"></div>
+
 ## off
+
 ### Description
 Removes an event handler from a given event.
 
@@ -99,7 +102,9 @@ EventTarget.fire('custom-event'); // Triggers nothing
 <hr class="separator">
 
 <div class="anchor" id="fire"></div>
+
 ## fire
+
 ### Description
 Fires an event with the given name and data.
 

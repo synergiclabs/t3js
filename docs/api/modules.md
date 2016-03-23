@@ -14,7 +14,9 @@ for unit testing. This is a completely different methodology than normal and sho
 <hr class="separator">
 
 <div class="anchor" id="init"></div>
+
 ## init
+
 ### Description
 Initializes the module. This method is fired automatically by <a href="{{ site.baseurl }}/docs/api/application/#start">Application.start</a>
 
@@ -43,7 +45,9 @@ Application.start(moduleEl);
 <hr class="separator">
 
 <div class="anchor" id="destroy"></div>
+
 ## destroy
+
 ### Description
 Destroys the module. This method is fired automatically by <a href="{{ site.baseurl }}/docs/api/application/#stop">Application.stop</a>
 
@@ -74,6 +78,7 @@ Application.stop(moduleEl);
 
 
 <div class="anchor" id="messages"></div>
+
 # Message Handling
 Messages are part of the built-in T3 pub/sub system for module events. Each module can broadcast information
 about events that have happened whlie other modules can subscribe to those messages via the 'onmessage' handler.
@@ -83,6 +88,7 @@ has occurred. A bad message name would be 'updateheader' since it implies what a
 of an event. Modules are isolated and should never be aware of other modules on the page!
 
 ## messages
+
 ### Description
 List of messages that this module will listen for. This is used by Application to fire onmessage handlers.
 You should place this at the top of the module API so it is easy to find.
@@ -100,7 +106,9 @@ Application.addModule('abc', function(context) {
 <hr class="separator">
 
 <div class="anchor" id="onmessage"></div>
+
 ## onmessage
+
 ### Description
 Handles application messages.
 
@@ -171,7 +179,9 @@ Application.broadcast('searchcomplete', {
 <hr class="separator">
 
 <div class="anchor" id="event-handlers"></div>
+
 # Event Handlers
+
 ### Description
 Handles specific DOM events that are fired within the module. These handlers follow the on<event> convention.
 For example, 'onclick' handles click events and 'oncontextmenu' handles right click.
@@ -246,8 +256,8 @@ Application.addModule('abc', function(context) {
 });
 {% endhighlight %}
 
-
 # Behaviors
+
 ### Description
 Behaviors work in parallel with modules. They are intended to be drop-in functionality that needs little additional
 interaction with the module. For example, a tabbed UI view where the UI logic is not necessarily important to the

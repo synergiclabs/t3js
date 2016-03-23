@@ -10,17 +10,20 @@ sourcecode: https://github.com/box/t3js/tree/gh-pages/examples/todo/live
 An app built for [TodoMVC](http://todomvc.com/)
 
 <div class="anchor" id="demo"></div>
+
 # Demo
 
 <iframe src="{{ site.baseurl }}/examples/todo/live/" width="700" height="500"></iframe>
 <a href="{{ site.baseurl }}/examples/todo/live/" target="_blank">Open in New Window</a>
 
 <div class="anchor" id="sourcecode"></div>
+
 # Source Code
 
 <a href="{{ page.sourcecode }}" target="_blank">View in GitHub</a>
 
 <div class="anchor" id="explanation"></div>
+
 # Explanation of Code
 
 The code was written for an HTML5 compliant browser.
