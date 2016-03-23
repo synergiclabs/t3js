@@ -713,7 +713,7 @@ Box.Application.broadcast('statechanged', {
 ## reportError
 
 ### Description
-Signals that an error has occurred. If in debug mode, an error is thrown. Otherwise, an event is fired.
+Signals that an error has occurred. If in debug mode, an error is thrown. Otherwise, an "error" event is fired.
 
 ### Usage
 <table class="table table-striped">
@@ -736,6 +736,36 @@ Signals that an error has occurred. If in debug mode, an error is thrown. Otherw
 ### Example
 {% highlight javascript %}
 Box.Application.reportError(new Error('Invalid User ID'));
+{% endhighlight %}
+
+<hr class="separator">
+
+## reportWarning
+
+### Description
+Signals that a warning has occurred. If in debug mode, `console.warn` is called. Otherwise, a "warning" event is fired.
+
+### Usage
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="required">data</td>
+            <td>*</td>
+            <td>An arbitrary string or object</td>
+        </tr>
+    </tbody>
+</table>
+
+### Example
+{% highlight javascript %}
+Box.Application.reportWarning('Line is almost full!');
 {% endhighlight %}
 
 <hr class="separator">
