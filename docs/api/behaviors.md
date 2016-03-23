@@ -19,7 +19,7 @@ does not care which module is using it. It does it's own thing and that is it.
 ## init
 
 ### Description
-Initializes the behavior. This method is fired automatically when <a href="{{ site.baseurl }}/docs/api/application/#start">Application.start</a> is called on the related module.
+Initializes the behavior. This method is fired automatically when <a href="{{ site.baseurl }}/docs/api/application/#start">Box.Application.start</a> is called on the related module.
 
 ### Example
 {% highlight html %}
@@ -29,7 +29,7 @@ Initializes the behavior. This method is fired automatically when <a href="{{ si
 {% endhighlight %}
 
 {% highlight javascript %}
-Application.addBehavior('item-menu', function(context) {
+Box.Application.addBehavior('item-menu', function(context) {
     var menu;
 
     return {
@@ -40,7 +40,7 @@ Application.addBehavior('item-menu', function(context) {
     };
 });
 
-Application.addModule('item-list', function(context) {
+Box.Application.addModule('item-list', function(context) {
     return {
         behaviors: ['item-menu']
     };
@@ -49,7 +49,7 @@ Application.addModule('item-list', function(context) {
 var moduleEl = document.getElementById('mod-item-list');
 
 // Will fire menu.init()
-Application.start(moduleEl);
+Box.Application.start(moduleEl);
 
 {% endhighlight %}
 
@@ -60,7 +60,7 @@ Application.start(moduleEl);
 ## destroy
 
 ### Description
-Destroys the behavior. This method is fired automatically when <a href="{{ site.baseurl }}/docs/api/application/#stop">Application.stop</a> is called on the related module.
+Destroys the behavior. This method is fired automatically when <a href="{{ site.baseurl }}/docs/api/application/#stop">Box.Application.stop</a> is called on the related module.
 
 ### Example
 {% highlight html %}
@@ -70,7 +70,7 @@ Destroys the behavior. This method is fired automatically when <a href="{{ site.
 {% endhighlight %}
 
 {% highlight javascript %}
-Application.addBehavior('item-menu', function(context) {
+Box.Application.addBehavior('item-menu', function(context) {
     var menu;
 
     return {
@@ -80,17 +80,17 @@ Application.addBehavior('item-menu', function(context) {
     };
 });
 
-Application.addModule('item-list', function(context) {
+Box.Application.addModule('item-list', function(context) {
     return {
         behaviors: ['item-menu']
     };
 });
 
 var moduleEl = document.getElementById('mod-item-list');
-Application.start(moduleEl);
+Box.Application.start(moduleEl);
 
 // Calls menu.destroy();
-Application.stop(moduleEl);
+Box.Application.stop(moduleEl);
 
 {% endhighlight %}
 
@@ -105,12 +105,12 @@ same message.
 ## messages
 
 ### Description
-List of messages that this behavior will listen for. This is used by Application to fire onmessage handlers.
+List of messages that this behavior will listen for. This is used by Box.Application to fire onmessage handlers.
 You should place this at the top of the behavior API so it is easy to find.
 
 ### Example
 {% highlight javascript %}
-Application.addBehavior('test-behavior', function(context) {
+Box.Application.addBehavior('test-behavior', function(context) {
     return {
         messages: ['some-message'],
         onmessage: ... see below ...
@@ -154,7 +154,7 @@ This message handler function should be placed above event handlers.
 
 ### Example
 {% highlight javascript %}
-Application.addBehavior('item', function(context) {
+Box.Application.addBehavior('item', function(context) {
 
     return {
         messages: ['itemdeleted', 'itemshared'],
@@ -177,10 +177,10 @@ Application.addBehavior('item', function(context) {
 });
 
 // Triggers output of "Item has been deleted!"
-Application.broadcast('itemdeleted');
+Box.Application.broadcast('itemdeleted');
 
 // Triggers output of "My Pictures shared."
-Application.broadcast('itemshared', {
+Box.Application.broadcast('itemshared', {
     name: "My Pictures"
 });
 {% endhighlight %}
@@ -199,7 +199,7 @@ List of handled events:
 
 {% include event-types.html %}
 
-Note: blur/focus events are very flaky and are not supported by Application. For special events, you should define
+Note: blur/focus events are very flaky and are not supported by Box.Application. For special events, you should define
 regular JavaScript event handlers in init() and remove them in destroy()
 
 The handler function should delegate complex logic to other functions. As a rule of thumb, try NOT to pass
@@ -238,7 +238,7 @@ of default case handling.
 
 ### Example
 {% highlight javascript %}
-Application.addBehavior('item-menu', function(context) {
+Box.Application.addBehavior('item-menu', function(context) {
     var menu;
 
     return {

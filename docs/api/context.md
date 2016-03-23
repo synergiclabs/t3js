@@ -6,7 +6,7 @@ permalink: /docs/api/context/
 
 # Context
 The object type that modules use to interact with the environment.
-Used exclusively within Application, but exposed publicly for easy testing.
+Used exclusively within Box.Application, but exposed publicly for easy testing.
 
 <div class="anchor" id="getElement"></div>
 
@@ -20,7 +20,7 @@ An HTMLElement object.
 
 ### Example
 {% highlight javascript %}
-Application.addModule('abc', function(context) {
+Box.Application.addModule('abc', function(context) {
     return {
         init: function() {
             // outputs HTMLElement with id 'mod-test-module'
@@ -38,7 +38,7 @@ Application.addModule('abc', function(context) {
 
 ### Description
 Retrieves a module's configuration data from embedded JSON in a 'text/x-config' script tag.
-This method is a proxy to <a href="../application/#getModuleConfig">Application.getModuleConfig</a> but with a shorter name.
+This method is a proxy to <a href="../application/#getModuleConfig">Box.Application.getModuleConfig</a> but with a shorter name.
 
 ### Usage
 <table class="table table-striped">
@@ -67,7 +67,7 @@ This method is a proxy to <a href="../application/#getModuleConfig">Application.
 {% endhighlight %}
 
 {% highlight javascript %}
-Application.addModule('abc', function(context) {
+Box.Application.addModule('abc', function(context) {
     return {
         init: function() {
             // Outputs "bar"
@@ -88,7 +88,7 @@ Application.addModule('abc', function(context) {
 ## broadcast
 
 ### Description
-Broadcasts a message to all registered listeners. A proxy to <a href="../application/#broadcast">Application.broadcast</a>
+Broadcasts a message to all registered listeners. A proxy to <a href="../application/#broadcast">Box.Application.broadcast</a>
 
 ### Usage
 <table class="table table-striped">
@@ -121,7 +121,7 @@ Broadcasts a message to all registered listeners. A proxy to <a href="../applica
 {% endhighlight %}
 
 {% highlight javascript %}
-Application.addModule('search-bar', function(context) {
+Box.Application.addModule('search-bar', function(context) {
     return {
         search: function() {
             context.broadcast('searchcomplete', {
@@ -140,7 +140,7 @@ Application.addModule('search-bar', function(context) {
 
 ### Description
 Retrieves an instance of a registered service.
-A proxy to <a href="../application/#getService">Application.getService</a>
+A proxy to <a href="../application/#getService">Box.Application.getService</a>
 
 ### Usage
 <table class="table table-striped">
@@ -165,7 +165,7 @@ T3 Service or null.
 
 ### Example
 {% highlight javascript %}
-Application.addModule('abc', function(context) {
+Box.Application.addModule('abc', function(context) {
     var dom;
 
     return {
@@ -221,7 +221,7 @@ console.log(navigator.userAgent);
 
 ### Description
 Retrieves a configuration value that was passed through init.
-A proxy to  <a href="../application/#getGlobalConfig">Application.getGlobalConfig</a>
+A proxy to  <a href="../application/#getGlobalConfig">Box.Application.getGlobalConfig</a>
 
 ### Usage
 <table class="table table-striped">
@@ -246,11 +246,11 @@ Object.
 
 ### Example
 {% highlight javascript %}
-Application.init({
+Box.Application.init({
     username: 'bob'
 });
 
-Application.addModule('abc', function(context) {
+Box.Application.addModule('abc', function(context) {
     return {
         init: function() {
             // Outputs "bob"

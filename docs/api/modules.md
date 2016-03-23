@@ -7,7 +7,7 @@ permalink: /docs/api/modules/
 # Modules
 The following methods are optional for you to implement per module.
 
-Modules are only accessible by Application which opens up the possibility of a less strict interface for the module's
+Modules are only accessible by Box.Application which opens up the possibility of a less strict interface for the module's
 definition. For example, if you have complex logic for modules, you may place the function in the public API
 for unit testing. This is a completely different methodology than normal and should not be applied to services.
 
@@ -18,7 +18,7 @@ for unit testing. This is a completely different methodology than normal and sho
 ## init
 
 ### Description
-Initializes the module. This method is fired automatically by <a href="{{ site.baseurl }}/docs/api/application/#start">Application.start</a>
+Initializes the module. This method is fired automatically by <a href="{{ site.baseurl }}/docs/api/application/#start">Box.Application.start</a>
 
 ### Example
 {% highlight html %}
@@ -28,7 +28,7 @@ Initializes the module. This method is fired automatically by <a href="{{ site.b
 {% endhighlight %}
 
 {% highlight javascript %}
-Application.addModule('abc', function(context) {
+Box.Application.addModule('abc', function(context) {
     return {
         init: function() {
             // Outputs "foo"
@@ -38,7 +38,7 @@ Application.addModule('abc', function(context) {
 });
 
 var moduleEl = document.getElementById('mod-test-module');
-Application.start(moduleEl);
+Box.Application.start(moduleEl);
 
 {% endhighlight %}
 
@@ -49,7 +49,7 @@ Application.start(moduleEl);
 ## destroy
 
 ### Description
-Destroys the module. This method is fired automatically by <a href="{{ site.baseurl }}/docs/api/application/#stop">Application.stop</a>
+Destroys the module. This method is fired automatically by <a href="{{ site.baseurl }}/docs/api/application/#stop">Box.Application.stop</a>
 
 ### Example
 {% highlight html %}
@@ -59,7 +59,7 @@ Destroys the module. This method is fired automatically by <a href="{{ site.base
 {% endhighlight %}
 
 {% highlight javascript %}
-Application.addModule('abc', function(context) {
+Box.Application.addModule('abc', function(context) {
     return {
         destroy: function() {
             // Outputs "bar"
@@ -69,8 +69,8 @@ Application.addModule('abc', function(context) {
 });
 
 var moduleEl = document.getElementById('mod-test-module');
-Application.start(moduleEl);
-Application.stop(moduleEl);
+Box.Application.start(moduleEl);
+Box.Application.stop(moduleEl);
 
 {% endhighlight %}
 
@@ -90,12 +90,12 @@ of an event. Modules are isolated and should never be aware of other modules on 
 ## messages
 
 ### Description
-List of messages that this module will listen for. This is used by Application to fire onmessage handlers.
+List of messages that this module will listen for. This is used by Box.Application to fire onmessage handlers.
 You should place this at the top of the module API so it is easy to find.
 
 ### Example
 {% highlight javascript %}
-Application.addModule('abc', function(context) {
+Box.Application.addModule('abc', function(context) {
     return {
         messages: ['statechanged', 'searchcomplete'],
         onmessage: ... see below ...
@@ -145,7 +145,7 @@ This message handler function should be placed above event handlers.
 {% endhighlight %}
 
 {% highlight javascript %}
-Application.addModule('abc', function(context) {
+Box.Application.addModule('abc', function(context) {
 
     return {
         messages: ['statechanged', 'searchcomplete'],
@@ -168,10 +168,10 @@ Application.addModule('abc', function(context) {
 });
 
 // Triggers output of "Navigating somewhere!"
-Application.broadcast('statechanged');
+Box.Application.broadcast('statechanged');
 
 // Triggers output of "Found 100 results."
-Application.broadcast('searchcomplete', {
+Box.Application.broadcast('searchcomplete', {
     numResults: 100
 });
 {% endhighlight %}
@@ -184,7 +184,7 @@ You may now specify message names as keys in an `onmessage` object. You do not n
 ### Example
 
 {% highlight javascript %}
-Application.addModule('abc', function(context) {
+Box.Application.addModule('abc', function(context) {
 
     return {
         onmessage: {
@@ -203,10 +203,10 @@ Application.addModule('abc', function(context) {
 });
 
 // Triggers output of "Navigating somewhere!"
-Application.broadcast('statechanged');
+Box.Application.broadcast('statechanged');
 
 // Triggers output of "Found 100 results."
-Application.broadcast('searchcomplete', {
+Box.Application.broadcast('searchcomplete', {
     numResults: 100
 });
 {% endhighlight %}
@@ -227,7 +227,7 @@ List of handled events:
 
 {% include event-types.html %}
 
-Note: blur/focus events are very flaky and are not supported by Application. For special events, you should define
+Note: blur/focus events are very flaky and are not supported by Box.Application. For special events, you should define
 regular JavaScript event handlers in init() and remove them in destroy()
 
 
@@ -271,7 +271,7 @@ the event object around.
 {% endhighlight %}
 
 {% highlight javascript %}
-Application.addModule('abc', function(context) {
+Box.Application.addModule('abc', function(context) {
 
     return {
         onclick: function(event, element, elementType) {

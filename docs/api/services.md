@@ -7,11 +7,11 @@ permalink: /docs/api/services/
 <div class="anchor" id="Services"></div>
 
 # Services
-Services are Application extensions that provide new capabilities to the entire system.
+Services are Box.Application extensions that provide new capabilities to the entire system.
 The most important aspect of a service is its interface. Other modules and services
 may depend on it and so the interface must remain stable so as not to unexpectedly break code.
 
-Unlike modules, services can interact directly with the Application layer and may access
+Unlike modules, services can interact directly with the Box.Application layer and may access
 lower level libraries such as jQuery and 3rd party plug-ins. In general, modules
 should only use services to get work done. Therefore, plugins, such as jQuery UI, should be wrapped
 or abstracted by a T3 service.
@@ -45,7 +45,7 @@ all users of the service. Be sure that is what you want.
 
 
 {% highlight js %}
-Application.addService('router', function(application) {
+Box.Application.addService('router', function(application) {
     return {
         route: function(url, state) {
             history.pushState(state, '', url);
@@ -53,7 +53,7 @@ Application.addService('router', function(application) {
     };
 });
 
-var router = Application.getService('router');
+var router = Box.Application.getService('router');
 router.route('/home', {});
 
 {% endhighlight %}
@@ -68,7 +68,7 @@ these guidelines are here for creating better interfaces. None not restrictions 
 Examples: popups, tooltips, menus
 
 {% highlight js %}
-Application.addService('popups', function(application) {
+Box.Application.addService('popups', function(application) {
 
     return {
         alert: function(message) { ... },
@@ -77,7 +77,7 @@ Application.addService('popups', function(application) {
 
 });
 
-var popupsService = Application.getService('popups');
+var popupsService = Box.Application.getService('popups');
 popupsService.alert('Hello World!');
 {% endhighlight %}
 
@@ -95,7 +95,7 @@ Most utility services follow the singleton pattern.
 Examples: dom, cookies, ajax
 
 {% highlight js %}
-Application.addService('dom', function(application) {
+Box.Application.addService('dom', function(application) {
 
     return {
         query: function(selector) { ... },
@@ -105,7 +105,7 @@ Application.addService('dom', function(application) {
 
 });
 
-var dom = Application.getService('dom');
+var dom = Box.Application.getService('dom');
 
 var element = dom.query('#test');
 dom.addClass(element, 'style1');
@@ -122,7 +122,7 @@ and constructor logic within these objects.
 Example Widgets: tooltips, menus, tabs
 
 {% highlight js %}
-Application.addService('tooltips', function(application) {
+Box.Application.addService('tooltips', function(application) {
 
     function Tooltip(params) {
         this.message = params.message;
@@ -142,7 +142,7 @@ Application.addService('tooltips', function(application) {
 
 });
 
-var tooltip = Application.getService('tooltips').create({
+var tooltip = Box.Application.getService('tooltips').create({
     message: 'Click Me!'
 });
 tooltip.show();
