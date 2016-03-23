@@ -176,6 +176,43 @@ Application.broadcast('searchcomplete', {
 });
 {% endhighlight %}
 
+## Alternate Usage (v2.3.0+)
+
+### Description
+You may now specify message names as keys in an `onmessage` object. You do not need to use the `messages` array with this approach.
+
+### Example
+
+{% highlight javascript %}
+Application.addModule('abc', function(context) {
+
+    return {
+        onmessage: {
+
+            statechanged: function() {
+                console.log('Navigating somewhere!');
+            },
+
+            searchcomplete: function(data) {
+                console.log('Found ' + data.numResults + ' results.');
+            }
+
+        }
+    };
+
+});
+
+// Triggers output of "Navigating somewhere!"
+Application.broadcast('statechanged');
+
+// Triggers output of "Found 100 results."
+Application.broadcast('searchcomplete', {
+    numResults: 100
+});
+{% endhighlight %}
+
+Functions will be called with the corresponding module context.
+
 <hr class="separator">
 
 <div class="anchor" id="event-handlers"></div>
