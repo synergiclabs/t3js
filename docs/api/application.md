@@ -766,7 +766,7 @@ Box.Application.reportError(new Error('Invalid User ID'));
 ## reportWarning
 
 ### Description
-Signals that a warning has occurred. If in debug mode, `console.warn` is called. Otherwise, a "warning" event is fired.
+Signals that a warning has occurred. If in debug mode, `console.warn` is called. Otherwise, a "warning" event is fired. Available in v2.4.0+
 
 ### Usage
 <table class="table table-striped">
