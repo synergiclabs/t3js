@@ -123,16 +123,6 @@ Register a T3 Service component.
             <td>Function</td>
             <td>Creator function for the service.</td>
         </tr>
-        <tr>
-            <td class="optional">options</td>
-            <td>Object</td>
-            <td>Additional options to configure the service.</td>
-        </tr>
-        <tr>
-            <td class="optional">options.exports</td>
-            <td>String[]</td>
-            <td>List of methods that will be exported onto Box.Application.</td>
-        </tr>
     </tbody>
 </table>
 
@@ -146,19 +136,6 @@ Box.Application.addService('some-service', function(application) {
         foo: function() { ... }
     };
 });
-{% endhighlight %}
-
-
-{% highlight javascript %}
-Box.Application.addService('router', function(application) {
-    return {
-        route: function() { ... }
-    };
-}, {
-    exports: ['route']
-});
-
-Box.Application.route(...);
 {% endhighlight %}
 
 <hr class="separator">

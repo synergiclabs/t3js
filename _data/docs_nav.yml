@@ -51,3 +51,7 @@
     title: DOMEventDelegate
   - id: context
     title: Context
+  - id: application-stub
+    title: Application Stub
+  - id: test-service-provider
+    title: Test Service Provider

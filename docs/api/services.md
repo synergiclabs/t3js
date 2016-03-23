@@ -58,26 +58,6 @@ router.route('/home', {});
 
 {% endhighlight %}
 
-### Export Functions
-A service can optionally export a function onto Application for convenience. This should be
-done with care since it does pollute the Application's interface. Here is the example above
-with an added export option:
-
-{% highlight js %}
-Application.addService('router', function(application) {
-    return {
-        route: function(url, state) {
-            history.pushState(state, '', url);
-        }
-    };
-}, {
-    exports: ['route']
-});
-
-Application.route('/home', {});
-
-{% endhighlight %}
-
 <div class="anchor" id="Widget"></div>
 
 ## Widgets
