@@ -16,6 +16,28 @@ var delegate = new Box.DOMEventDelegate(element, {
 });
 {% endhighlight %}
 
+You may also pass a custom list of events to handle as a third parameter (*v2.4.0+*):
+{% highlight javascript %}
+var delegate = new Box.DOMEventDelegate(element, {
+    ontouchstart: function(event) {
+        console.log(event.type);
+    }
+}, ['touchstart']);
+{% endhighlight %}
+
+
+<div class="anchor" id="defaultEventTypes"></div>
+
+## Default Event Types Handled
+
+{% highlight javascript %}
+var eventTypes = [
+    'click', 'mouseover', 'mouseout', 'mousedown',
+    'mouseup', 'mouseenter', 'mouseleave', 'mousemove',
+    'keydown', 'keyup', 'submit', 'change', 'contextmenu',
+    'dblclick', 'input', 'focusin', 'focusout'
+];
+{% endhighlight %}
 
 <div class="anchor" id="attachEvents"></div>
 

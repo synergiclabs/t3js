@@ -35,6 +35,11 @@ Initializes the application. This will start modules on the page.
             <td>boolean</td>
             <td>If true, will print exceptions in console. Otherwise, will catch all exceptions and hide them from users.</td>
         </tr>
+        <tr>
+            <td class="optional">config.eventTypes</td>
+            <td>string[]</td>
+            <td>A list of event types that T3 should respond to. This overrides the default event type list. Event types specified MUST bubble. Available in v2.4.0+</td>
+        </tr>
     </tbody>
 </table>
 
@@ -53,6 +58,24 @@ Box.Application.init({
     bar: "baz"
 });
 {% endhighlight %}
+
+### Default Event Types
+{% highlight javascript %}
+var eventTypes = [
+    'click', 'mouseover', 'mouseout', 'mousedown',
+    'mouseup', 'mouseenter', 'mouseleave', 'mousemove',
+    'keydown', 'keyup', 'submit', 'change', 'contextmenu',
+    'dblclick', 'input', 'focusin', 'focusout'
+];
+{% endhighlight %}
+
+### Example
+{% highlight javascript %}
+Box.Application.init({
+    eventTypes: ['click', 'touchstart', 'touchend']
+});
+{% endhighlight %}
+Please remember that the events specified must bubble in order to be handled correctly by T3.
 
 <hr class="separator">
 
