@@ -10,9 +10,9 @@ The object type that handles events for modules and behaviors. Exposed publicly 
 
 {% highlight javascript %}
 var delegate = new Box.DOMEventDelegate(element, {
-	onclick: function(event) {
-		console.log(event.type);
-	}
+    onclick: function(event) {
+        console.log(event.type);
+    }
 });
 {% endhighlight %}
 
@@ -25,9 +25,9 @@ Attaches all events for the delegate.
 ### Example
 {% highlight javascript %}
 var delegate = new Box.DOMEventDelegate(element, {
-	onclick: function(event) {
-		console.log(event.type);
-	}
+    onclick: function(event) {
+        console.log(event.type);
+    }
 });
 
 delegate.attachEvents();
@@ -44,9 +44,9 @@ Detaches all events for the delegate.
 ### Example
 {% highlight javascript %}
 var delegate = new Box.DOMEventDelegate(element, {
-	onclick: function(event) {
-		console.log(event.type);
-	}
+    onclick: function(event) {
+        console.log(event.type);
+    }
 });
 
 delegate.detachEvents();

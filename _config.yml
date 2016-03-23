@@ -1,6 +1,6 @@
 name: T3 Javascript Framework
 markdown: kramdown
 kramdown:
-  input: GFM
-  syntax_highlighter: rouge
-baseurl: "
+    input: GFM
+    syntax_highlighter: rouge
+baseurl: ""

@@ -21,18 +21,18 @@ Initializes the module. This method is fired automatically by <a href="{{ site.b
 ### Example
 {% highlight html %}
 <div id="mod-test-module" data-module="test-module">
-	...
+    ...
 </div>
 {% endhighlight %}
 
 {% highlight javascript %}
 Application.addModule('abc', function(context) {
-	return {
-		init: function() {
-			// Outputs "foo"
-			console.log('foo');
-		}
-	};
+    return {
+        init: function() {
+            // Outputs "foo"
+            console.log('foo');
+        }
+    };
 });
 
 var moduleEl = document.getElementById('mod-test-module');
@@ -50,18 +50,18 @@ Destroys the module. This method is fired automatically by <a href="{{ site.base
 ### Example
 {% highlight html %}
 <div id="mod-test-module" data-module="test-module">
-	...
+    ...
 </div>
 {% endhighlight %}
 
 {% highlight javascript %}
 Application.addModule('abc', function(context) {
-	return {
-		destroy: function() {
-			// Outputs "bar"
-			console.log('bar');
-		}
-	};
+    return {
+        destroy: function() {
+            // Outputs "bar"
+            console.log('bar');
+        }
+    };
 });
 
 var moduleEl = document.getElementById('mod-test-module');
@@ -90,10 +90,10 @@ You should place this at the top of the module API so it is easy to find.
 ### Example
 {% highlight javascript %}
 Application.addModule('abc', function(context) {
-	return {
-		messages: ['statechanged', 'searchcomplete'],
-		onmessage: ... see below ...
-	};
+    return {
+        messages: ['statechanged', 'searchcomplete'],
+        onmessage: ... see below ...
+    };
 });
 {% endhighlight %}
 
@@ -108,54 +108,54 @@ This message handler function should be placed above event handlers.
 
 ### Usage
 <table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Parameter</th>
-			<th>Type</th>
-			<th>Description</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td class="required">name</td>
-			<td>string</td>
-			<td>The message name.</td>
-		</tr>
-		<tr>
-			<td class="optional">data</td>
-			<td>any</td>
-			<td>Related data for the message.</td>
-		</tr>
-	</tbody>
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="required">name</td>
+            <td>string</td>
+            <td>The message name.</td>
+        </tr>
+        <tr>
+            <td class="optional">data</td>
+            <td>any</td>
+            <td>Related data for the message.</td>
+        </tr>
+    </tbody>
 </table>
 
 ### Example
 {% highlight html %}
 <div id="mod-test-module" data-module="test-module">
-	...
+    ...
 </div>
 {% endhighlight %}
 
 {% highlight javascript %}
 Application.addModule('abc', function(context) {
 
-	return {
-		messages: ['statechanged', 'searchcomplete'],
-		onmessage: function(name, data) {
+    return {
+        messages: ['statechanged', 'searchcomplete'],
+        onmessage: function(name, data) {
 
-			switch (name) {
+            switch (name) {
 
-				case 'statechanged':
-					console.log('Navigating somewhere!');
-					break;
+                case 'statechanged':
+                    console.log('Navigating somewhere!');
+                    break;
 
-				case 'searchcomplete':
-					console.log('Found ' + data.numResults + ' results.');
-					break;
+                case 'searchcomplete':
+                    console.log('Found ' + data.numResults + ' results.');
+                    break;
 
-			}
-		}
-	};
+            }
+        }
+    };
 
 });
 
@@ -164,7 +164,7 @@ Application.broadcast('statechanged');
 
 // Triggers output of "Found 100 results."
 Application.broadcast('searchcomplete', {
-	numResults: 100
+    numResults: 100
 });
 {% endhighlight %}
 
@@ -189,59 +189,59 @@ the event object around.
 
 ### Usage
 <table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Parameter</th>
-			<th>Type</th>
-			<th>Description</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td class="required">event</td>
-			<td>Event</td>
-			<td>A DOM-normalized event object.</td>
-		</tr>
-		<tr>
-			<td class="required">element</td>
-			<td>HTMLElement</td>
-			<td>The nearest HTML element with a data-type attribute specified or null if there is none.</td>
-		</tr>
-		<tr>
-			<td class="required">elementType</td>
-			<td>string</td>
-			<td>The value of data-type for the nearest element with that attribute specified or null if there is none.</td>
-		</tr>
-	</tbody>
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="required">event</td>
+            <td>Event</td>
+            <td>A DOM-normalized event object.</td>
+        </tr>
+        <tr>
+            <td class="required">element</td>
+            <td>HTMLElement</td>
+            <td>The nearest HTML element with a data-type attribute specified or null if there is none.</td>
+        </tr>
+        <tr>
+            <td class="required">elementType</td>
+            <td>string</td>
+            <td>The value of data-type for the nearest element with that attribute specified or null if there is none.</td>
+        </tr>
+    </tbody>
 </table>
 
 ### Example
 {% highlight html %}
 <div id="mod-test-module" data-module="test-module">
-	<button data-type="okay-btn">Okay</button>
-	<button data-type="cancel-btn">Cancel</button>
+    <button data-type="okay-btn">Okay</button>
+    <button data-type="cancel-btn">Cancel</button>
 </div>
 {% endhighlight %}
 
 {% highlight javascript %}
 Application.addModule('abc', function(context) {
 
-	return {
-		onclick: function(event, element, elementType) {
+    return {
+        onclick: function(event, element, elementType) {
 
-			switch (elementType) {
+            switch (elementType) {
 
-				case 'okay-btn':
-					console.log('OK!');
-					break;
+                case 'okay-btn':
+                    console.log('OK!');
+                    break;
 
-				case 'cancel-btn':
-					console.log('NO!');
-					break;
+                case 'cancel-btn':
+                    console.log('NO!');
+                    break;
 
-			}
-		}
-	};
+            }
+        }
+    };
 
 });
 {% endhighlight %}

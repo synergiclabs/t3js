@@ -20,31 +20,31 @@ Adds a new event handler for a particular type of event.
 
 ### Usage
 <table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Parameter</th>
-			<th>Type</th>
-			<th>Description</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td class="required">type</td>
-			<td>string</td>
-			<td>The name of the event to listen for.</td>
-		</tr>
-		<tr>
-			<td class="required">handler</td>
-			<td>Function</td>
-			<td>The function to call when the event occurs.</td>
-		</tr>
-	</tbody>
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="required">type</td>
+            <td>string</td>
+            <td>The name of the event to listen for.</td>
+        </tr>
+        <tr>
+            <td class="required">handler</td>
+            <td>Function</td>
+            <td>The function to call when the event occurs.</td>
+        </tr>
+    </tbody>
 </table>
 
 ### Example
 {% highlight javascript %}
 function customEventHandler(event) {
-	console.log('test');
+    console.log('test');
 });
 
 EventTarget.on('custom-event', customEventHandler);
@@ -61,31 +61,31 @@ Removes an event handler from a given event.
 
 ### Usage
 <table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Parameter</th>
-			<th>Type</th>
-			<th>Description</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td class="required">type</td>
-			<td>string</td>
-			<td>The name of the event to remove from.</td>
-		</tr>
-		<tr>
-			<td class="required">handler</td>
-			<td>Function</td>
-			<td>The function to remove as a handler.</td>
-		</tr>
-	</tbody>
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="required">type</td>
+            <td>string</td>
+            <td>The name of the event to remove from.</td>
+        </tr>
+        <tr>
+            <td class="required">handler</td>
+            <td>Function</td>
+            <td>The function to remove as a handler.</td>
+        </tr>
+    </tbody>
 </table>
 
 ### Example
 {% highlight javascript %}
 function customEventHandler(event) {
-	console.log('test');
+    console.log('test');
 });
 
 EventTarget.on('custom-event', customEventHandler);
@@ -105,38 +105,38 @@ Fires an event with the given name and data.
 
 ### Usage
 <table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Parameter</th>
-			<th>Type</th>
-			<th>Description</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td class="required">type</td>
-			<td>string</td>
-			<td>The type of event to fire.</td>
-		</tr>
-		<tr>
-			<td class="optional">data</td>
-			<td>Function</td>
-			<td>An object with properties that should end up on the event object for the given event.</td>
-		</tr>
-	</tbody>
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="required">type</td>
+            <td>string</td>
+            <td>The type of event to fire.</td>
+        </tr>
+        <tr>
+            <td class="optional">data</td>
+            <td>Function</td>
+            <td>An object with properties that should end up on the event object for the given event.</td>
+        </tr>
+    </tbody>
 </table>
 
 ### Example
 {% highlight javascript %}
 function searchCompleteHandler(event, data) {
-	console.log('Found ' + data.numResults + ' results.');
+    console.log('Found ' + data.numResults + ' results.');
 });
 
 EventTarget.on('searchcomplete', searchCompleteHandler);
 
 // Triggers an output of "Found 100 results."
 EventTarget.fire('searchcomplete', {
-	numResults: 100
+    numResults: 100
 });
 
 {% endhighlight %}

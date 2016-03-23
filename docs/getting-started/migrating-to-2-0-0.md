@@ -27,23 +27,23 @@ This should allow the modules to rely on any required setup from the behaviors.
 
 {% highlight js %}
 Box.Application.addBehavior('some-behavior', function(context) {
-	return {
-		init: function() {
-			console.log('foo');
-		}
-	};
+    return {
+        init: function() {
+            console.log('foo');
+        }
+    };
 });
 {% endhighlight %}
 
 {% highlight js %}
 Box.Application.addModule('some-module', function(context) {
-	return {
-		behavior: ['some-behavior'],
+    return {
+        behavior: ['some-behavior'],
 
-		init: function() {
-			console.log('bar');
-		}
-	};
+        init: function() {
+            console.log('bar');
+        }
+    };
 });
 {% endhighlight %}
 
@@ -65,7 +65,7 @@ Previously, this would return `null`. Use `hasService()` to check for optional s
 
 {% highlight js %}
 var service = application.hasService('some-service')
-		? application.getService('some-service') : null;
+        ? application.getService('some-service') : null;
 {% endhighlight %}
 This change will allow developers to catch issues with missing services before they hit production.
 
@@ -73,7 +73,7 @@ This change will allow developers to catch issues with missing services before t
 
 {% highlight js %}
 Box.Application.addService('foo', function() { ... }, {
-	exports: ['bar']
+    exports: ['bar']
 });
 Box.Application.bar(); // no longer works
 {% endhighlight %}
@@ -83,12 +83,12 @@ This option was unused and dangerous since it modified the global `Application` 
 
 {% highlight js %}
 beforeEach(function() {
-	var context = new Box.TestServiceProvider({
-		service1: {
-			foo: function() {}
-		}
-	}, ['dom', 'promises']); // List of services used but not stubbed
-	...
+    var context = new Box.TestServiceProvider({
+        service1: {
+            foo: function() {}
+        }
+    }, ['dom', 'promises']); // List of services used but not stubbed
+    ...
 });
 {% endhighlight %}
 This will prevent accidental leakage of services between unit tests.

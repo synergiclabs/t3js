@@ -19,12 +19,12 @@ An HTMLElement object.
 ### Example
 {% highlight javascript %}
 Application.addModule('abc', function(context) {
-	return {
-		init: function() {
-			// outputs HTMLElement with id 'mod-test-module'
-			console.log(context.getElement());
-		}
-	};
+    return {
+        init: function() {
+            // outputs HTMLElement with id 'mod-test-module'
+            console.log(context.getElement());
+        }
+    };
 });
 {% endhighlight %}
 
@@ -38,38 +38,38 @@ This method is a proxy to <a href="../application/#getModuleConfig">Application.
 
 ### Usage
 <table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Parameter</th>
-			<th>Type</th>
-			<th>Description</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td class="optional">name</td>
-			<td>string</td>
-			<td>Specific configuration value to retrieve.</td>
-		</tr>
-	</tbody>
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="optional">name</td>
+            <td>string</td>
+            <td>Specific configuration value to retrieve.</td>
+        </tr>
+    </tbody>
 </table>
 
 ### Example
 {% highlight html %}
 <div id="mod-test-module" data-module="test-module">
-	<script type="text/x-config">{"foo": "bar"}</script>
-	...
+    <script type="text/x-config">{"foo": "bar"}</script>
+    ...
 </div>
 {% endhighlight %}
 
 {% highlight javascript %}
 Application.addModule('abc', function(context) {
-	return {
-		init: function() {
-			// Outputs "bar"
-			console.log(context.getConfig('foo'));
-		}
-	};
+    return {
+        init: function() {
+            // Outputs "bar"
+            console.log(context.getConfig('foo'));
+        }
+    };
 });
 {% endhighlight %}
 
@@ -87,43 +87,43 @@ Broadcasts a message to all registered listeners. A proxy to <a href="../applica
 
 ### Usage
 <table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Parameter</th>
-			<th>Type</th>
-			<th>Description</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td class="required">name</td>
-			<td>string</td>
-			<td>Name of the message</td>
-		</tr>
-		<tr>
-			<td class="optional">data</td>
-			<td>any</td>
-			<td>Custom parameters for the message</td>
-		</tr>
-	</tbody>
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="required">name</td>
+            <td>string</td>
+            <td>Name of the message</td>
+        </tr>
+        <tr>
+            <td class="optional">data</td>
+            <td>any</td>
+            <td>Custom parameters for the message</td>
+        </tr>
+    </tbody>
 </table>
 
 ### Example
 {% highlight html %}
 <div id="mod-search-bar" data-module="search-bar">
-	...
+    ...
 </div>
 {% endhighlight %}
 
 {% highlight javascript %}
 Application.addModule('search-bar', function(context) {
-	return {
-		search: function() {
-			context.broadcast('searchcomplete', {
-				numResults: 100
-			});
-		}
-	};
+    return {
+        search: function() {
+            context.broadcast('searchcomplete', {
+                numResults: 100
+            });
+        }
+    };
 });
 {% endhighlight %}
 
@@ -138,20 +138,20 @@ A proxy to <a href="../application/#getService">Application.getService</a>
 
 ### Usage
 <table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Parameter</th>
-			<th>Type</th>
-			<th>Description</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td class="required">service</td>
-			<td>string</td>
-			<td>Name of service.</td>
-		</tr>
-	</tbody>
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="required">service</td>
+            <td>string</td>
+            <td>Name of service.</td>
+        </tr>
+    </tbody>
 </table>
 
 ### Returns
@@ -160,13 +160,13 @@ T3 Service or null.
 ### Example
 {% highlight javascript %}
 Application.addModule('abc', function(context) {
-	var dom;
+    var dom;
 
-	return {
-		init: function() {
-			dom = context.getService('dom');
-		}
-	};
+    return {
+        init: function() {
+            dom = context.getService('dom');
+        }
+    };
 });
 {% endhighlight %}
 
@@ -179,20 +179,20 @@ Returns a global variable. This function exists to make accessing globals more e
 
 ### Usage
 <table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Parameter</th>
-			<th>Type</th>
-			<th>Description</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td class="required">name</td>
-			<td>string</td>
-			<td>Name of global.</td>
-		</tr>
-	</tbody>
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="required">name</td>
+            <td>string</td>
+            <td>Name of global.</td>
+        </tr>
+    </tbody>
 </table>
 
 ### Returns
@@ -216,20 +216,20 @@ A proxy to  <a href="../application/#getGlobalConfig">Application.getGlobalConfi
 
 ### Usage
 <table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Parameter</th>
-			<th>Type</th>
-			<th>Description</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td class="required">key</td>
-			<td>string</td>
-			<td>Config key.</td>
-		</tr>
-	</tbody>
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="required">key</td>
+            <td>string</td>
+            <td>Config key.</td>
+        </tr>
+    </tbody>
 </table>
 
 ### Returns
@@ -238,15 +238,15 @@ Object.
 ### Example
 {% highlight javascript %}
 Application.init({
-	username: 'bob'
+    username: 'bob'
 });
 
 Application.addModule('abc', function(context) {
-	return {
-		init: function() {
-			// Outputs "bob"
-			console.log(context.getGlobalConfig('username'));
-		}
-	};
+    return {
+        init: function() {
+            // Outputs "bob"
+            console.log(context.getGlobalConfig('username'));
+        }
+    };
 });
 {% endhighlight %}

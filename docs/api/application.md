@@ -15,25 +15,25 @@ Initializes the application. This will start modules on the page.
 
 ### Usage
 <table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Parameter</th>
-			<th>Type</th>
-			<th>Description</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td class="optional">config</td>
-			<td>Object</td>
-			<td>Used to pass configuration information to services. See <a href="#getGlobalConfig">getGlobalConfig</a>.</td>
-		</tr>
-		<tr>
-			<td class="optional">config.debug</td>
-			<td>boolean</td>
-			<td>If true, will print exceptions in console. Otherwise, will catch all exceptions and hide them from users.</td>
-		</tr>
-	</tbody>
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="optional">config</td>
+            <td>Object</td>
+            <td>Used to pass configuration information to services. See <a href="#getGlobalConfig">getGlobalConfig</a>.</td>
+        </tr>
+        <tr>
+            <td class="optional">config.debug</td>
+            <td>boolean</td>
+            <td>If true, will print exceptions in console. Otherwise, will catch all exceptions and hide them from users.</td>
+        </tr>
+    </tbody>
 </table>
 
 ### Returns
@@ -46,9 +46,9 @@ Box.Application.init();
 or
 {% highlight javascript %}
 Box.Application.init({
-	debug: true,
-	foo: { ... },
-	bar: "baz"
+    debug: true,
+    foo: { ... },
+    bar: "baz"
 });
 {% endhighlight %}
 
@@ -76,35 +76,35 @@ Register a T3 Service component.
 
 ### Usage
 <table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Parameter</th>
-			<th>Type</th>
-			<th>Description</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td class="required">name</td>
-			<td>string</td>
-			<td>Name of service.</td>
-		</tr>
-		<tr>
-			<td class="required">creator</td>
-			<td>Function</td>
-			<td>Creator function for the service.</td>
-		</tr>
-		<tr>
-			<td class="optional">options</td>
-			<td>Object</td>
-			<td>Additional options to configure the service.</td>
-		</tr>
-		<tr>
-			<td class="optional">options.exports</td>
-			<td>String[]</td>
-			<td>List of methods that will be exported onto Box.Application.</td>
-		</tr>
-	</tbody>
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="required">name</td>
+            <td>string</td>
+            <td>Name of service.</td>
+        </tr>
+        <tr>
+            <td class="required">creator</td>
+            <td>Function</td>
+            <td>Creator function for the service.</td>
+        </tr>
+        <tr>
+            <td class="optional">options</td>
+            <td>Object</td>
+            <td>Additional options to configure the service.</td>
+        </tr>
+        <tr>
+            <td class="optional">options.exports</td>
+            <td>String[]</td>
+            <td>List of methods that will be exported onto Box.Application.</td>
+        </tr>
+    </tbody>
 </table>
 
 ### Returns
@@ -113,20 +113,20 @@ The `Box.Application` object (for chaining purposes).
 ### Example
 {% highlight javascript %}
 Box.Application.addService('some-service', function(application) {
-	return {
-		foo: function() { ... }
-	};
+    return {
+        foo: function() { ... }
+    };
 });
 {% endhighlight %}
 
 
 {% highlight javascript %}
 Box.Application.addService('router', function(application) {
-	return {
-		route: function() { ... }
-	};
+    return {
+        route: function() { ... }
+    };
 }, {
-	exports: ['route']
+    exports: ['route']
 });
 
 Box.Application.route(...);
@@ -141,25 +141,25 @@ Register a T3 Module component.
 
 ### Usage
 <table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Parameter</th>
-			<th>Type</th>
-			<th>Description</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td class="required">name</td>
-			<td>string</td>
-			<td>Name of module.</td>
-		</tr>
-		<tr>
-			<td class="required">creator</td>
-			<td>Function</td>
-			<td>Creator function for the module.</td>
-		</tr>
-	</tbody>
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="required">name</td>
+            <td>string</td>
+            <td>Name of module.</td>
+        </tr>
+        <tr>
+            <td class="required">creator</td>
+            <td>Function</td>
+            <td>Creator function for the module.</td>
+        </tr>
+    </tbody>
 </table>
 
 ### Returns
@@ -168,10 +168,10 @@ The `Box.Application` object (for chaining purposes).
 ### Example
 {% highlight javascript %}
 Box.Application.addModule('some-module', function(context) {
-	return {
-		init: function() { ... },
-		destroy: function() { ... }
-	};
+    return {
+        init: function() { ... },
+        destroy: function() { ... }
+    };
 });
 {% endhighlight %}
 
@@ -185,25 +185,25 @@ Register a T3 Behavior component.
 
 ### Usage
 <table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Parameter</th>
-			<th>Type</th>
-			<th>Description</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td class="required">name</td>
-			<td>string</td>
-			<td>Name of behavior.</td>
-		</tr>
-		<tr>
-			<td class="required">creator</td>
-			<td>Function</td>
-			<td>Creator function for the behavior.</td>
-		</tr>
-	</tbody>
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="required">name</td>
+            <td>string</td>
+            <td>Name of behavior.</td>
+        </tr>
+        <tr>
+            <td class="required">creator</td>
+            <td>Function</td>
+            <td>Creator function for the behavior.</td>
+        </tr>
+    </tbody>
 </table>
 
 ### Returns
@@ -212,10 +212,10 @@ The `Box.Application` object (for chaining purposes).
 ### Example
 {% highlight javascript %}
 Box.Application.addBehavior('some-behavior', function(context) {
-	return {
-		init: function() { ... },
-		destroy: function() { ... }
-	};
+    return {
+        init: function() { ... },
+        destroy: function() { ... }
+    };
 });
 {% endhighlight %}
 
@@ -228,20 +228,20 @@ Retrieves an instance of a registered service.
 
 ### Usage
 <table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Parameter</th>
-			<th>Type</th>
-			<th>Description</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td class="required">service</td>
-			<td>string</td>
-			<td>Name of service.</td>
-		</tr>
-	</tbody>
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="required">service</td>
+            <td>string</td>
+            <td>Name of service.</td>
+        </tr>
+    </tbody>
 </table>
 
 ### Returns
@@ -256,20 +256,20 @@ Checks if a service has been registered.
 
 ### Usage
 <table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Parameter</th>
-			<th>Type</th>
-			<th>Description</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td class="required">service</td>
-			<td>string</td>
-			<td>Name of service.</td>
-		</tr>
-	</tbody>
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="required">service</td>
+            <td>string</td>
+            <td>Name of service.</td>
+        </tr>
+    </tbody>
 </table>
 
 ### Returns
@@ -284,20 +284,20 @@ Returns a global variable. This function exists to make accessing globals more e
 
 ### Usage
 <table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Parameter</th>
-			<th>Type</th>
-			<th>Description</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td class="required">name</td>
-			<td>string</td>
-			<td>Name of global.</td>
-		</tr>
-	</tbody>
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="required">name</td>
+            <td>string</td>
+            <td>Name of global.</td>
+        </tr>
+    </tbody>
 </table>
 
 ### Returns
@@ -320,20 +320,20 @@ Retrieves a configuration value that was passed through init.
 
 ### Usage
 <table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Parameter</th>
-			<th>Type</th>
-			<th>Description</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td class="required">key</td>
-			<td>string</td>
-			<td>Config key.</td>
-		</tr>
-	</tbody>
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="required">key</td>
+            <td>string</td>
+            <td>Config key.</td>
+        </tr>
+    </tbody>
 </table>
 
 ### Returns
@@ -342,7 +342,7 @@ Object.
 ### Example
 {% highlight javascript %}
 Box.Application.init({
-	username: 'bob'
+    username: 'bob'
 });
 
 console.log(Box.Application.getGlobalConfig('username')); // Outputs "bob"
@@ -360,32 +360,32 @@ See <a href="../context/#getConfig">Context.getConfig</a>.
 
 ### Usage
 <table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Parameter</th>
-			<th>Type</th>
-			<th>Description</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td class="required">element</td>
-			<td>HTMLElement</td>
-			<td>Module root element.</td>
-		</tr>
-		<tr>
-			<td class="optional">name</td>
-			<td>string</td>
-			<td>Specific configuration value to retrieve.</td>
-		</tr>
-	</tbody>
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="required">element</td>
+            <td>HTMLElement</td>
+            <td>Module root element.</td>
+        </tr>
+        <tr>
+            <td class="optional">name</td>
+            <td>string</td>
+            <td>Specific configuration value to retrieve.</td>
+        </tr>
+    </tbody>
 </table>
 
 ### Example
 {% highlight html %}
 <div id="mod-test-module" data-module="test-module">
-	<script type="text/x-config">{"foo": "bar"}</script>
-	...
+    <script type="text/x-config">{"foo": "bar"}</script>
+    ...
 </div>
 {% endhighlight %}
 
@@ -414,20 +414,20 @@ Begins the lifecycle of a module (registers and binds listeners).
 
 ### Usage
 <table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Parameter</th>
-			<th>Type</th>
-			<th>Description</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td class="required">element</td>
-			<td>HTMLElement</td>
-			<td>DOM element associated with module to be started</td>
-		</tr>
-	</tbody>
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="required">element</td>
+            <td>HTMLElement</td>
+            <td>DOM element associated with module to be started</td>
+        </tr>
+    </tbody>
 </table>
 
 ### Returns
@@ -436,7 +436,7 @@ The `Box.Application` object (for chaining purposes).
 ### Example
 {% highlight html %}
 <div id="mod-test-module" data-module="test-module">
-	...
+    ...
 </div>
 {% endhighlight %}
 
@@ -455,20 +455,20 @@ Starts all modules contained within an element.
 
 ### Usage
 <table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Parameter</th>
-			<th>Type</th>
-			<th>Description</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td class="required">element</td>
-			<td>HTMLElement</td>
-			<td>DOM element which contains modules</td>
-		</tr>
-	</tbody>
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="required">element</td>
+            <td>HTMLElement</td>
+            <td>DOM element which contains modules</td>
+        </tr>
+    </tbody>
 </table>
 
 ### Returns
@@ -477,12 +477,12 @@ The `Box.Application` object (for chaining purposes).
 ### Example
 {% highlight html %}
 <div id="content">
-	<div id="mod-test-module" data-module="test-module">
-		...
-	</div>
-	<div id="mod-another-module" data-module="another-module">
-		...
-	</div>
+    <div id="mod-test-module" data-module="test-module">
+        ...
+    </div>
+    <div id="mod-another-module" data-module="another-module">
+        ...
+    </div>
 </div>
 {% endhighlight %}
 
@@ -501,20 +501,20 @@ Ends the lifecycle of a module (unregisters and unbinds listeners).
 
 ### Usage
 <table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Parameter</th>
-			<th>Type</th>
-			<th>Description</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td class="required">element</td>
-			<td>HTMLElement</td>
-			<td>DOM element associated with module to be stopped</td>
-		</tr>
-	</tbody>
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="required">element</td>
+            <td>HTMLElement</td>
+            <td>DOM element associated with module to be stopped</td>
+        </tr>
+    </tbody>
 </table>
 
 ### Returns
@@ -523,7 +523,7 @@ The `Box.Application` object (for chaining purposes).
 ### Example
 {% highlight html %}
 <div id="mod-test-module" data-module="test-module">
-	...
+    ...
 </div>
 {% endhighlight %}
 
@@ -542,20 +542,20 @@ Stops all modules contained within an element.
 
 ### Usage
 <table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Parameter</th>
-			<th>Type</th>
-			<th>Description</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td class="required">element</td>
-			<td>HTMLElement</td>
-			<td>DOM element which contains modules</td>
-		</tr>
-	</tbody>
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="required">element</td>
+            <td>HTMLElement</td>
+            <td>DOM element which contains modules</td>
+        </tr>
+    </tbody>
 </table>
 
 ### Returns
@@ -564,12 +564,12 @@ The `Box.Application` object (for chaining purposes).
 ### Example
 {% highlight html %}
 <div id="content">
-	<div id="mod-test-module" data-module="test-module">
-		...
-	</div>
-	<div id="mod-another-module" data-module="another-module">
-		...
-	</div>
+    <div id="mod-test-module" data-module="test-module">
+        ...
+    </div>
+    <div id="mod-another-module" data-module="another-module">
+        ...
+    </div>
 </div>
 {% endhighlight %}
 
@@ -589,20 +589,20 @@ If the element doesn't have a data-module attribute, this method always returns 
 
 ### Usage
 <table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Parameter</th>
-			<th>Type</th>
-			<th>Description</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td class="required">element</td>
-			<td>HTMLElement</td>
-			<td>DOM element which contains modules</td>
-		</tr>
-	</tbody>
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="required">element</td>
+            <td>HTMLElement</td>
+            <td>DOM element which contains modules</td>
+        </tr>
+    </tbody>
 </table>
 
 ### Returns
@@ -611,7 +611,7 @@ Returns true if module is started. False, otherwise.
 ### Example
 {% highlight html %}
 <div id="mod-test-module" data-module="test-module">
-	...
+    ...
 </div>
 {% endhighlight %}
 
@@ -634,25 +634,25 @@ Broadcasts a message to all registered listeners
 
 ### Usage
 <table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Parameter</th>
-			<th>Type</th>
-			<th>Description</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td class="required">name</td>
-			<td>string</td>
-			<td>Name of the message</td>
-		</tr>
-		<tr>
-			<td class="optional">data</td>
-			<td>any</td>
-			<td>Custom parameters for the message</td>
-		</tr>
-	</tbody>
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="required">name</td>
+            <td>string</td>
+            <td>Name of the message</td>
+        </tr>
+        <tr>
+            <td class="optional">data</td>
+            <td>any</td>
+            <td>Custom parameters for the message</td>
+        </tr>
+    </tbody>
 </table>
 
 ### Returns
@@ -661,7 +661,7 @@ The `Box.Application` object (for chaining purposes).
 ### Example
 {% highlight html %}
 <div id="mod-test-module" data-module="test-module">
-	...
+    ...
 </div>
 {% endhighlight %}
 
@@ -671,8 +671,8 @@ Box.Application.broadcast('some-message');
 
 {% highlight javascript %}
 Box.Application.broadcast('statechanged', {
-	foo: 'search',
-	bar: 'home'
+    foo: 'search',
+    bar: 'home'
 });
 {% endhighlight %}
 
@@ -684,20 +684,20 @@ Signals that an error has occurred. If in debug mode, an error is thrown. Otherw
 
 ### Usage
 <table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Parameter</th>
-			<th>Type</th>
-			<th>Description</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td class="required">exception</td>
-			<td>Error</td>
-			<td>An error object</td>
-		</tr>
-	</tbody>
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="required">exception</td>
+            <td>Error</td>
+            <td>An error object</td>
+        </tr>
+    </tbody>
 </table>
 
 ### Example

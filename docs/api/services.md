@@ -42,11 +42,11 @@ all users of the service. Be sure that is what you want.
 
 {% highlight js %}
 Application.addService('router', function(application) {
-	return {
-		route: function(url, state) {
-			history.pushState(state, '', url);
-		}
-	};
+    return {
+        route: function(url, state) {
+            history.pushState(state, '', url);
+        }
+    };
 });
 
 var router = Application.getService('router');
@@ -61,13 +61,13 @@ with an added export option:
 
 {% highlight js %}
 Application.addService('router', function(application) {
-	return {
-		route: function(url, state) {
-			history.pushState(state, '', url);
-		}
-	};
+    return {
+        route: function(url, state) {
+            history.pushState(state, '', url);
+        }
+    };
 }, {
-	exports: ['route']
+    exports: ['route']
 });
 
 Application.route('/home', {});
@@ -85,10 +85,10 @@ Examples: popups, tooltips, menus
 {% highlight js %}
 Application.addService('popups', function(application) {
 
-	return {
-		alert: function(message) { ... },
-		confirm: function(message, callback) { ... }
-	};
+    return {
+        alert: function(message) { ... },
+        confirm: function(message, callback) { ... }
+    };
 
 });
 
@@ -110,11 +110,11 @@ Examples: dom, cookies, ajax
 {% highlight js %}
 Application.addService('dom', function(application) {
 
-	return {
-		query: function(selector) { ... },
-		addClass: function(element, className) { ... }
-		removeClassClass: function(element, className) { ... }
-	};
+    return {
+        query: function(selector) { ... },
+        addClass: function(element, className) { ... }
+        removeClassClass: function(element, className) { ... }
+    };
 
 });
 
@@ -136,26 +136,26 @@ Example Widgets: tooltips, menus, tabs
 {% highlight js %}
 Application.addService('tooltips', function(application) {
 
-	function Tooltip(params) {
-		this.message = params.message;
-	}
-	Tooltip.prototype.show = function() {};
-	Tooltip.prototype.hide = function() {};
+    function Tooltip(params) {
+        this.message = params.message;
+    }
+    Tooltip.prototype.show = function() {};
+    Tooltip.prototype.hide = function() {};
 
-	// Return a factory object with some additional functionality
-	return {
-		create: function(params) {
-			return new Tooltip(params);
-		},
-		hideAll: function() {
-			...
-		}
-	};
+    // Return a factory object with some additional functionality
+    return {
+        create: function(params) {
+            return new Tooltip(params);
+        },
+        hideAll: function() {
+            ...
+        }
+    };
 
 });
 
 var tooltip = Application.getService('tooltips').create({
-	message: 'Click Me!'
+    message: 'Click Me!'
 });
 tooltip.show();
 {% endhighlight %}

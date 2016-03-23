@@ -22,26 +22,26 @@ Initializes the behavior. This method is fired automatically when <a href="{{ si
 ### Example
 {% highlight html %}
 <div id="mod-item-list" data-module="item-list">
-	...
+    ...
 </div>
 {% endhighlight %}
 
 {% highlight javascript %}
 Application.addBehavior('item-menu', function(context) {
-	var menu;
+    var menu;
 
-	return {
-		init: function() {
-			menu = context.getService('menus').create();
-			menu.init();
-		}
-	};
+    return {
+        init: function() {
+            menu = context.getService('menus').create();
+            menu.init();
+        }
+    };
 });
 
 Application.addModule('item-list', function(context) {
-	return {
-		behaviors: ['item-menu']
-	};
+    return {
+        behaviors: ['item-menu']
+    };
 });
 
 var moduleEl = document.getElementById('mod-item-list');
@@ -61,25 +61,25 @@ Destroys the behavior. This method is fired automatically when <a href="{{ site.
 ### Example
 {% highlight html %}
 <div id="mod-item-list" data-module="test-item-list">
-	...
+    ...
 </div>
 {% endhighlight %}
 
 {% highlight javascript %}
 Application.addBehavior('item-menu', function(context) {
-	var menu;
+    var menu;
 
-	return {
-		destroy: function() {
-			menu.destroy();
-		}
-	};
+    return {
+        destroy: function() {
+            menu.destroy();
+        }
+    };
 });
 
 Application.addModule('item-list', function(context) {
-	return {
-		behaviors: ['item-menu']
-	};
+    return {
+        behaviors: ['item-menu']
+    };
 });
 
 var moduleEl = document.getElementById('mod-item-list');
@@ -105,10 +105,10 @@ You should place this at the top of the behavior API so it is easy to find.
 ### Example
 {% highlight javascript %}
 Application.addBehavior('test-behavior', function(context) {
-	return {
-		messages: ['some-message'],
-		onmessage: ... see below ...
-	};
+    return {
+        messages: ['some-message'],
+        onmessage: ... see below ...
+    };
 });
 {% endhighlight %}
 
@@ -123,48 +123,48 @@ This message handler function should be placed above event handlers.
 
 ### Usage
 <table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Parameter</th>
-			<th>Type</th>
-			<th>Description</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td class="required">name</td>
-			<td>string</td>
-			<td>The message name.</td>
-		</tr>
-		<tr>
-			<td class="optional">data</td>
-			<td>any</td>
-			<td>Related data for the message.</td>
-		</tr>
-	</tbody>
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="required">name</td>
+            <td>string</td>
+            <td>The message name.</td>
+        </tr>
+        <tr>
+            <td class="optional">data</td>
+            <td>any</td>
+            <td>Related data for the message.</td>
+        </tr>
+    </tbody>
 </table>
 
 ### Example
 {% highlight javascript %}
 Application.addBehavior('item', function(context) {
 
-	return {
-		messages: ['itemdeleted', 'itemshared'],
-		onmessage: function(name, data) {
+    return {
+        messages: ['itemdeleted', 'itemshared'],
+        onmessage: function(name, data) {
 
-			switch (name) {
+            switch (name) {
 
-				case 'itemdeleted':
-					console.log('Item has been deleted!');
-					break;
+                case 'itemdeleted':
+                    console.log('Item has been deleted!');
+                    break;
 
-				case 'itemshared':
-					console.log(data.name + ' shared.');
-					break;
+                case 'itemshared':
+                    console.log(data.name + ' shared.');
+                    break;
 
-			}
-		}
-	};
+            }
+        }
+    };
 
 });
 
@@ -173,7 +173,7 @@ Application.broadcast('itemdeleted');
 
 // Triggers output of "My Pictures shared."
 Application.broadcast('itemshared', {
-	name: "My Pictures"
+    name: "My Pictures"
 });
 {% endhighlight %}
 
@@ -200,51 +200,51 @@ of default case handling.
 
 ### Usage
 <table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Parameter</th>
-			<th>Type</th>
-			<th>Description</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td class="required">event</td>
-			<td>Event</td>
-			<td>A DOM-normalized event object.</td>
-		</tr>
-		<tr>
-			<td class="required">element</td>
-			<td>HTMLElement</td>
-			<td>The nearest HTML element with a data-type attribute specified or null if there is none.</td>
-		</tr>
-		<tr>
-			<td class="required">elementType</td>
-			<td>string</td>
-			<td>The value of data-type for the nearest element with that attribute specified or null if there is none.</td>
-		</tr>
-	</tbody>
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="required">event</td>
+            <td>Event</td>
+            <td>A DOM-normalized event object.</td>
+        </tr>
+        <tr>
+            <td class="required">element</td>
+            <td>HTMLElement</td>
+            <td>The nearest HTML element with a data-type attribute specified or null if there is none.</td>
+        </tr>
+        <tr>
+            <td class="required">elementType</td>
+            <td>string</td>
+            <td>The value of data-type for the nearest element with that attribute specified or null if there is none.</td>
+        </tr>
+    </tbody>
 </table>
 
 ### Example
 {% highlight javascript %}
 Application.addBehavior('item-menu', function(context) {
-	var menu;
+    var menu;
 
-	return {
-		onclick: function(event, element, elementType) {
+    return {
+        onclick: function(event, element, elementType) {
 
-			switch (elementType) {
+            switch (elementType) {
 
-				case 'options-btn':
-					menu.open();
-					break;
+                case 'options-btn':
+                    menu.open();
+                    break;
 
-				// Behaviors should not have default handling
+                // Behaviors should not have default handling
 
-			}
-		}
-	};
+            }
+        }
+    };
 
 });
 {% endhighlight %}

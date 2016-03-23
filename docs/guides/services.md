@@ -193,7 +193,7 @@ Occasionally, you may want to include a service but only if it is available. Use
 {% highlight js %}
 var someService;
 if (application.hasService('some-service')) {
-	someService = application.getService('some-service');
+    someService = application.getService('some-service');
 }
 {% endhighlight %}
 
