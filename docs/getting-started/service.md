@@ -11,7 +11,7 @@ When your module needs to do something that isn't directly related to user inter
 
 ## JavaScript for Services
 
-Services are defined by calling `Box.Application.addService()`. This method accepts two arguments: the module ID and a creator function. This is similar to `Box.Application.addModule()` but with one important exception: the argument passed to the creator function is `Box.Application`. That's because services are considered to be extensions of `Box.Application` and therefore are able to access all of the available functionality (as opposed to modules, which only may access a subset of the functionality).
+Services are defined by calling `Box.Application.addService()`. This method accepts two arguments: the service ID and a creator function. This is similar to `Box.Application.addModule()` but with one important exception: the argument passed to the creator function is `Box.Application`. That's because services are considered to be extensions of `Box.Application` and therefore are able to access all of the available functionality (as opposed to modules, which only may access a subset of the functionality).
 
 The basic format for services is:
 
